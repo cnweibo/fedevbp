@@ -74,7 +74,7 @@ function startBrowserSyncDev () {
             baseDir: projectrootdir,
             directory: true
         },
-        files: [projectrootdir+'*.css'], //projectrootdir+'public
+        files: [projectrootdir+'*.css',projectrootdir+'*.html'], //projectrootdir+'public
         ghostMode: {
             clicks: true,
             location: false,
