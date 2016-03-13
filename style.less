@@ -36,10 +36,19 @@ body{
 .row{
   margin-left: -@gap;
   padding-left: @gap;
+  .clearfix()
+}
+.col1-2{
+  float: left;
+  width: 50%;
+  padding-right: @gap;
 }
 .col1-4{
   float: left;
   width: 25%;
+//  margin-right: @gap;
+  padding-right: @gap;
+
 }
 /* layout */
 .l-topremovable,.l-topnav,.l-banner,.l-featured-product,.l-workplace,.l-maincontent,.l-footer{
@@ -49,6 +58,28 @@ body{
     margin: 0 auto;
   }
 }
+/* javascript glue css selectors */
+.j-coursehovered{
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 200%;
+  //          height: 100%;
+  margin-left: -20px;
+  background-color: white;
+  padding-left: 20px;
+  margin-top: -20px;
+  padding-top: 20px;
+}
+.j-relative{
+  position: relative;
+}
+.j-hidden{
+  display: none;
+}
+/* page components */
 .l-topremovable{
   line-height: 36px;
   background-color: #f3f3f3;
@@ -253,6 +284,29 @@ body{
     .content{
       margin-top: 30px;
       .course{
+        position: relative;
+        .preview{
+          cursor: pointer;
+          img{
+            width: 100%;
+          }
+        }
+        .detail{
+
+          .imagedesc{
+            width: 100%;
+          }
+          .textdesc{
+            .studentnum{
+              &:before{
+                display: inline-block;
+                content: url('images/person.png');
+                padding-right: 5px;
+                padding-left: 3px;
+              }
+            }
+          }
+        }
         background-color: #ffffff;
         font-size: 12px;
         .title{
@@ -288,6 +342,15 @@ body{
             display: inline-block;
 
           }
+        }
+        &.coursepreview{
+//          width: 50%;
+//          .preview{
+//            display: none;
+//          }
+        }
+        .detail{
+
         }
       }
       .m-paginator{
