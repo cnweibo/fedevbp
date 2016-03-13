@@ -1,5 +1,5 @@
 module.exports = function () {
-  var projectrootdir = "d:\\devenv\\Code\\netease/";
+  var projectrootdir = "C:\\Users\\Administrator\\devenvironment\\Code\\fedevbp/";
 	var config = {
                 projectrootdir: projectrootdir,
                 pagelessentry: [
