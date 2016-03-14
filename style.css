@@ -1,0 +1,598 @@
+/* import css framework */
+/* global variables */
+/*gap between grid columns*/
+@media screen and (max-width: 767px) {
+}
+@media (min-width: 768px) {
+}
+@media (min-width: 768px) {
+}
+@media (max-width: 767px) {
+}
+@media (min-width: 768px) {
+}
+@media (min-width: 768px) {
+}
+@media (max-width: 767px) {
+}
+@media (max-width: 767px) {
+}
+.l-topremovable:before,
+.l-topremovable:after,
+.l-topnav:before,
+.l-topnav:after,
+.l-banner:before,
+.l-banner:after,
+.l-featured-product:before,
+.l-featured-product:after,
+.l-workplace:before,
+.l-workplace:after,
+.l-maincontent:before,
+.l-maincontent:after,
+.l-footer:before,
+.l-footer:after {
+  content: " ";
+  display: table;
+}
+.l-topremovable:after,
+.l-topnav:after,
+.l-banner:after,
+.l-featured-product:after,
+.l-workplace:after,
+.l-maincontent:after,
+.l-footer:after {
+  clear: both;
+}
+/* mixins */
+@font-face {
+  font-family: 'applew3<p></p>';
+  src: url('fonts/applew3.eot');
+  src: url('fonts/applew3.eot?#font-spider') format('embedded-opentype'), url('fonts/applew3.woff') format('woff'), url('fonts/applew3.ttf') format('truetype'), url('fonts/applew3.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* reset css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+/* typograph */
+body {
+  font-family: '微软雅黑', sans-serif;
+}
+/* layout helper classes */
+.row {
+  margin-left: -20px;
+  padding-left: 20px;
+}
+.row:before,
+.row:after {
+  content: " ";
+  display: table;
+}
+.row:after {
+  clear: both;
+}
+.row:before,
+.row:after {
+  content: " ";
+  display: table;
+}
+.row:after {
+  clear: both;
+}
+.col1-2 {
+  float: left;
+  width: 50%;
+  padding-right: 10px;
+}
+.col1-4 {
+  float: left;
+  width: 25%;
+  padding-right: 20px;
+}
+.row-bgap20 {
+  margin-bottom: 20px;
+}
+/* layout */
+.l-topremovable,
+.l-topnav,
+.l-banner,
+.l-featured-product,
+.l-workplace,
+.l-maincontent,
+.l-footer {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.l-topremovable .container,
+.l-topnav .container,
+.l-banner .container,
+.l-featured-product .container,
+.l-workplace .container,
+.l-maincontent .container,
+.l-footer .container {
+  width: 87.5%;
+  margin: 0 auto;
+}
+/* javascript glue css selectors */
+.j-coursehovered {
+  display: none;
+  /*默认为宽屏，不予以显示*/
+}
+@media (max-width: 1205px) {
+  .j-coursehovered {
+    display: block;
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 200%;
+    margin-left: -20px;
+    background-color: white;
+    padding-left: 20px;
+    margin-top: -20px;
+    margin-bottom: -20px;
+    padding-top: 20px;
+  }
+}
+.j-relative {
+  position: relative;
+}
+.j-hidden {
+  display: none;
+}
+/* page components */
+.l-topremovable {
+  line-height: 36px;
+  background-color: #f3f3f3;
+}
+.l-topremovable .container {
+  font-size: 12px;
+}
+.l-topremovable .container .title {
+  float: left;
+  font-weight: normal;
+  color: #333333;
+}
+.l-topremovable .container a {
+  text-decoration: none;
+  font-weight: normal;
+  color: #21a557;
+}
+.l-topremovable .container .dismiss {
+  float: right;
+}
+.l-topremovable .container .dismiss em {
+  font-style: normal;
+  margin-right: 6px;
+}
+.l-topnav {
+  line-height: 90px;
+}
+.l-topnav .logo {
+  margin-right: 30px;
+}
+.l-topnav .followus {
+  display: inline-block;
+  font-family: "宋体", sans-serif;
+  font-weight: normal;
+  font-size: 12px;
+}
+.l-topnav .followus a {
+  display: inline-block;
+  background-color: #21a557;
+  color: #ffffff;
+  line-height: 21px;
+  padding-left: 21px;
+  padding-right: 18px;
+}
+.l-topnav .followus a:before {
+  content: '+';
+  font-weight: bold;
+  margin-right: 5px;
+}
+.l-topnav .followus a:after {
+  content: 'i';
+  margin-left: 2px;
+}
+.l-topnav .followus a:hover {
+  background-color: #2fb556;
+}
+.l-topnav .followus .followernum {
+  margin-left: 15px;
+}
+.l-topnav .followus .followernum em {
+  font-style: normal;
+}
+.l-topnav .m-navmenu {
+  float: right;
+  font-family: "applew3", sans-serif;
+}
+@font-face {
+  font-family: 'applew3';
+  src: url('fonts/applew3.eot');
+  src: url('fonts/applew3.eot?#font-spider') format('embedded-opentype'), url('fonts/applew3.woff') format('woff'), url('fonts/applew3.ttf') format('truetype'), url('fonts/applew3.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.l-topnav .m-navmenu li {
+  display: inline-block;
+}
+.l-topnav .m-navmenu li a {
+  font-weight: normal;
+  font-size: 16px;
+  color: #666666;
+}
+.l-topnav .m-navmenu li a:hover {
+  color: #39a030;
+}
+.l-topnav .m-navmenu li .search {
+  width: 19px;
+  height: 19px;
+  background-image: url('images/search.png');
+}
+.l-banner {
+  position: relative;
+}
+.l-banner .container {
+  width: 100%;
+}
+.l-banner .container img {
+  display: none;
+  width: 100%;
+}
+.l-banner .container img.active {
+  display: inline;
+}
+.l-banner .bannernav {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  bottom: 10px;
+}
+.l-banner .bannernav .navpoint {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  bottom: 10px;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+.l-banner .bannernav .navpoint.active {
+  background-color: #000000;
+}
+.l-featured-product {
+  margin-top: 60px;
+}
+.l-featured-product .m-featuredprom {
+  float: left;
+  width: 33.3%;
+  padding-right: 88px;
+  color: #333333;
+}
+.l-featured-product .m-featuredprom .badged {
+  position: relative;
+  float: left;
+  margin-right: 18px;
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  background-color: #39a030;
+}
+.l-featured-product .m-featuredprom .badged img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.l-featured-product .m-featuredprom .ptext {
+  overflow: hidden;
+}
+.l-featured-product .m-featuredprom .ptext .more {
+  color: #39a030;
+  font-size: 14px;
+}
+.l-featured-product .m-featuredprom .title,
+.l-featured-product .m-featuredprom .description {
+  color: #666666;
+  font-weight: normal;
+}
+.l-featured-product .m-featuredprom .title {
+  font-size: 22px;
+  margin-bottom: 1em;
+}
+.l-featured-product .m-featuredprom .description {
+  font-size: 14px;
+  margin-bottom: 2em;
+}
+.l-workplace {
+  margin-left: -4px;
+  margin-top: 60px;
+  height: 220px;
+  overflow: hidden;
+}
+.l-workplace .workplace {
+  float: left;
+  width: 20%;
+  height: 100%;
+  padding-left: 4px;
+}
+.l-maincontent {
+  padding-top: 80px;
+  background-color: #f8f8f8;
+}
+.l-maincontent .maincontent {
+  float: left;
+  width: 100%;
+  /*默认为小屏幕，当大屏时做media query*/
+}
+@media (min-width: 1205px) {
+  .l-maincontent .maincontent {
+    width: 80%;
+  }
+}
+.l-maincontent .maincontent .tab {
+  display: table-row;
+  font-size: 20px;
+}
+.l-maincontent .maincontent .tab div {
+  display: table-cell;
+  text-align: center;
+  width: 200px;
+  line-height: 50px;
+}
+.l-maincontent .maincontent .tab div.active {
+  color: #ffffff;
+  background-color: #39a030;
+}
+.l-maincontent .maincontent .tab div.inactive {
+  color: #666666;
+  background-color: #ffffff;
+  border-bottom: ;
+}
+.l-maincontent .maincontent .content {
+  margin-top: 30px;
+}
+.l-maincontent .maincontent .content .course {
+  position: relative;
+  background-color: #ffffff;
+  font-size: 12px;
+}
+.l-maincontent .maincontent .content .course:hover .detail {
+  outline: 1px solid #D7D7D7;
+}
+.l-maincontent .maincontent .content .course .preview {
+  cursor: pointer;
+}
+@media (min-width: 1205px) {
+  .l-maincontent .maincontent .content .course .preview {
+    border: 1px solid #F1F1F1;
+  }
+}
+.l-maincontent .maincontent .content .course .preview img {
+  width: 100%;
+}
+.l-maincontent .maincontent .content .course .preview:hover {
+  border: 1px solid #E6E6E6;
+  outline: 1px dashed #ED636E;
+  outline-offset: 10px;
+}
+.l-maincontent .maincontent .content .course .preview:hover .title {
+  color: #39A030;
+}
+.l-maincontent .maincontent .content .course .detail .imagedesc {
+  width: 100%;
+}
+.l-maincontent .maincontent .content .course .detail .textdesc .studentnum:before {
+  display: inline-block;
+  content: url('images/person.png');
+  padding-right: 5px;
+  padding-left: 3px;
+}
+.l-maincontent .maincontent .content .course .detail .detailtext {
+  position: absolute;
+  bottom: 0;
+  padding: 36px 0;
+  margin-left: -20px;
+  padding-left: 20px;
+  background-color: #F8F8F8;
+}
+.l-maincontent .maincontent .content .course .title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-weight: normal;
+  color: #333333;
+}
+.l-maincontent .maincontent .content .course .category {
+  color: #999999;
+  margin: 10px auto;
+}
+.l-maincontent .maincontent .content .course .studentsnum {
+  width: 40px;
+  border: 1px solid #ddd;
+  border-radius: 1px;
+  font-size: 5px;
+  line-height: 16px;
+}
+.l-maincontent .maincontent .content .course .studentsnum:before {
+  display: inline-block;
+  content: url('images/person.png');
+  padding-right: 5px;
+  padding-left: 3px;
+}
+.l-maincontent .maincontent .content .course .price {
+  font-size: 8px;
+  margin: 10px auto;
+  color: #ff3f00;
+}
+.l-maincontent .maincontent .content .course .price:before {
+  content: '\00A5';
+  display: inline-block;
+}
+.l-maincontent .maincontent .content .m-paginator {
+  margin: 30px 0 120px;
+  float: right;
+}
+.l-maincontent .maincontent .content .m-paginator .left,
+.l-maincontent .maincontent .content .m-paginator .right {
+  display: inline-block;
+  width: 30px;
+  line-height: 20px;
+  text-align: center;
+  background-color: #9dd8b1;
+  color: #ffffff;
+}
+.l-maincontent .maincontent .content .m-paginator .paginator {
+  display: inline-block;
+}
+.l-maincontent .maincontent .content .m-paginator .paginator li {
+  display: inline-block;
+  font-size: 14px;
+  color: #666666;
+  padding: 0 10px;
+}
+.l-maincontent .maincontent .content .m-paginator .paginator li.active {
+  color: #ffffff;
+  background-color: #9dd8b1;
+}
+@media (min-width: 1205px) {
+  .jigoujieshao {
+    float: left;
+    border-bottom: 1px solid #d4d3d3;
+    border-left: 1px solid #ecebeb;
+    border-right: 1px solid #ecebeb;
+    width: 20%;
+  }
+  .jigoujieshao .videointro {
+    background-color: #ffffff;
+  }
+  .jigoujieshao .videointro .head {
+    padding: 20px;
+    font-size: 16px;
+    font-weight: normal;
+    color: #333333;
+  }
+  .jigoujieshao .videointro .video {
+    padding: 20px;
+  }
+  .jigoujieshao .videointro .video h4 {
+    padding: 20px 0 20px 0;
+    font-size: 14px;
+    font-weight: normal;
+    color: #666666;
+  }
+  .jigoujieshao hr {
+    border: 1px solid #dddddd;
+  }
+  .jigoujieshao .hotlist {
+    margin-top: 20px;
+    padding-bottom: 20px;
+    background-color: #ffffff;
+  }
+  .jigoujieshao .hotlist .head {
+    padding: 20px;
+    font-size: 16px;
+    font-weight: normal;
+    color: #333333;
+  }
+  .jigoujieshao .hotlist hr {
+    border: 1px solid #eeeeee;
+  }
+  .jigoujieshao .hotlist .m-hostcourseitem {
+    margin: 20px;
+  }
+  .jigoujieshao .hotlist .m-hostcourseitem img {
+    float: left;
+    margin-right: 10px;
+    width: 50px;
+    height: 50px;
+  }
+  .jigoujieshao .hotlist .m-hostcourseitem .info h4 {
+    font-size: 14px;
+    font-weight: normal;
+    color: #333333;
+  }
+  .jigoujieshao .hotlist .m-hostcourseitem .info .studentnum {
+    color: #999999;
+  }
+}
+@media (max-width: 1205px) {
+  .jigoujieshao {
+    display: none;
+  }
+}
+.l-footer {
+  background-color: #2c3339;
+}
+.l-footer .container {
+  padding: 80px;
+  overflow: hidden;
+}
+.l-footer .container li {
+  line-height: 30px;
+}
+.l-footer .container .siteinfo {
+  float: left;
+  width: 48%;
+  font-size: 12.5px;
+  font-weight: normal;
+  color: #ffffff;
+}
+.l-footer .container .siteinfo .logo {
+  margin-bottom: 36px;
+}
+.l-footer .container .siteinfo .copyright,
+.l-footer .container .siteinfo .beian {
+  margin-left: 28px;
+}
+.l-footer .container .friendlink {
+  float: left;
+  width: 17%;
+}
+.l-footer .container .friendlink .title {
+  font-size: 12.5px;
+  font-weight: normal;
+  color: #ffffff;
+}
+.l-footer .container .friendlink a {
+  font-size: 14.5px;
+  color: #ffffff;
+}
+.l-footer .container .aboutus {
+  float: left;
+  width: 11%;
+}
+.l-footer .container .aboutus .title {
+  font-size: 12.5px;
+  color: #ffffff;
+}
+.l-footer .container .aboutus a {
+  font-size: 14.5px;
+  color: #ffffff;
+}
+.l-footer .container .more {
+  float: left;
+  width: 24%;
+}
+.l-footer .container .more .title {
+  font-size: 12.5px;
+  color: #ffffff;
+}
+.l-footer .container .more a {
+  font-size: 14.5px;
+  color: #ffffff;
+}
+
+/*# sourceMappingURL=style.css.map */
