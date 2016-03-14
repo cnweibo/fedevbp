@@ -16,6 +16,18 @@
 .width(@num){
 	width: @num*1%;
 }
+.margint(@p){
+	margin-top: @p;
+}
+.marginb(@p){
+	margin-bottom: @p;
+}
+.marginl(@p){
+	margin-left: @p;
+}
+.marginr(@p){
+	margin-right: @p;
+}
 /* reset css */
 *{
 	margin: 0;
@@ -32,7 +44,7 @@ a{
 body{
   font-family: '微软雅黑',sans-serif;
 }
-/* layout helpers */
+/* layout helper classes */
 .row{
   margin-left: -@gap;
   padding-left: @gap;
@@ -49,6 +61,9 @@ body{
 //  margin-right: @gap;
   padding-right: @gap;
 
+}
+.row-bgap20{
+	.marginb(20px);
 }
 /* layout */
 .l-topremovable,.l-topnav,.l-banner,.l-featured-product,.l-workplace,.l-maincontent,.l-footer{
@@ -67,11 +82,12 @@ body{
   bottom: 0;
   width: 200%;
   //          height: 100%;
-  margin-left: -20px;
+  margin-left: -@gap;
   background-color: white;
-  padding-left: 20px;
-  margin-top: -20px;
-  padding-top: 20px;
+  padding-left: @gap;
+  margin-top: -@gap;
+  margin-bottom: -@gap;
+  padding-top: @gap;
 }
 .j-relative{
   position: relative;
@@ -285,6 +301,11 @@ body{
       margin-top: 30px;
       .course{
         position: relative;
+		&:hover{
+			.detail{
+				outline: 1px solid #D7D7D7;
+			}
+		}
         .preview{
           cursor: pointer;
           img{
@@ -292,7 +313,7 @@ body{
           }
         }
         .detail{
-
+			
           .imagedesc{
             width: 100%;
           }
@@ -305,6 +326,14 @@ body{
                 padding-left: 3px;
               }
             }
+          }
+          .detailtext{
+          	position: absolute;
+          	bottom: 0;
+          	padding: 36px 0;
+          	margin-left: -@gap;
+          	padding-left: @gap;
+          	background-color: #F8F8F8;
           }
         }
         background-color: #ffffff;
