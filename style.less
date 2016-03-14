@@ -318,7 +318,9 @@ body{
 		}
         .preview{
           cursor: pointer;
-          border: 1px solid #F1F1F1;
+          @media (min-width: @mediabreakpoint) {
+          	border: 1px solid #F1F1F1;
+          }
           img{
             width: 100%;
           }
