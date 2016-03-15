@@ -121,7 +121,8 @@
     var course = getElementsByClassName('course col1-4');
     for (var i = 0; i < course.length; i++) {
     	addEvent(course[i],'mouseenter', function(e) {
-    		var that = this;
+            // IE8兼容性支持
+            var that = e.srcElement || e.target;  
     		var detail = getElementsByClassName('detail',that)[0];
             console.log(this);
     		if (detail.className.indexOf('j-hidden')) {
@@ -131,7 +132,7 @@
 	    	}
     	});
 		addEvent(course[i],'mouseleave', function(e) {
-			var that = this;
+			var that = e.srcElement || e.target; 
 			var detail = getElementsByClassName('detail',that)[0];
 			if (detail.className.indexOf('j-hidden')==-1) {
 	    		detail.classList.add('j-hidden');
