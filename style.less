@@ -347,23 +347,34 @@ body{
             width: 100%;
           }
           .textdesc{
-            .studentnum{
-              &:before{
-                display: inline-block;
-                *display:inline;
-                *zoom:1;
-                content: url('images/person.png');
-                padding-right: 5px;
-                padding-left: 3px;
-              }
+            margin-left: 8px;
+            font-size: 12px;
+            color: #666666;
+            h2{
+              font-weight: normal;
+              margin: 4px auto 16px 0;
+              font-size: 18px;
+              color: #333333;
+            }
+            .studynum{
+               margin: 0 auto 10px 0;
+             }
+            img{
+              margin-right: 6px;
+            }
+            p{
+              margin-top: 4px;
             }
           }
           .detailtext{
           	position: absolute;
           	bottom: 0;
-          	padding: 36px 0;
+          	padding: 20px 0;
           	margin-left: -@gap;
           	padding-left: @gap;
+            font-size: 14px;
+            line-height: 24px;
+            color: #666666;
           	background-color: #F8F8F8;
           }
         }
