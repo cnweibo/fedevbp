@@ -167,9 +167,9 @@
                alert('HTTP error ' + req.status);
                return;
            }
-           var data = JSON.parse(req.responseText);
+           var data = window.hotlistdata = JSON.parse(req.responseText);
+           var parent = document.getElementsByClassName('hotlist')[0];
            for (var i = 0; i < 10; i++) {
-               var parent = document.getElementsByClassName('hotlist')[0];
                var item = document.createElement('div');
                item.setAttribute('class','m-hostcourseitem');
                var innerhtml = ' <img src="'+data[i].middlePhotoUrl+'" alt=""><div class="info"><h4>'+data[i].name+'</h4><div class="studentnum">'+data[i].learnerCount+'</div></div>';
@@ -178,7 +178,7 @@
            };
            // updateobj('span', req.responseXML.getElementsByTagName('username')[0].firstChild.nodeValue);
        }
-       req.open('GET', file, true);
+       req.open('GET', file, false);
        if (req.readyState == 4) return;
        req.send(postData);
     }
