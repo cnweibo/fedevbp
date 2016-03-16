@@ -167,7 +167,15 @@
                alert('HTTP error ' + req.status);
                return;
            }
-           console.dir(req.responseText);
+           var data = JSON.parse(req.responseText);
+           for (var i = 0; i < 10; i++) {
+               var parent = document.getElementsByClassName('hotlist')[0];
+               var item = document.createElement('div');
+               item.setAttribute('class','m-hostcourseitem');
+               var innerhtml = ' <img src="'+data[i].middlePhotoUrl+'" alt=""><div class="info"><h4>'+data[i].name+'</h4><div class="studentnum">'+data[i].learnerCount+'</div></div>';
+               item.innerHTML = innerhtml;
+               parent.appendChild(item);
+           };
            // updateobj('span', req.responseXML.getElementsByTagName('username')[0].firstChild.nodeValue);
        }
        req.open('GET', file, true);
@@ -177,6 +185,5 @@
     function updateobj(obj, data) {
        document.getElementsByTagName(obj)[0].firstChild.nodeValue = data;
     }
-    ajaxread('http://study.163.com/webDev/hostcoursesByCategory.htm');
-    
+    ajaxread('/hotcourselist.json');
 }())
