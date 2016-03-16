@@ -550,9 +550,22 @@ body {
   }
   .jigoujieshao .hotlist .m-hostcourseitem {
     margin: 20px;
-    &:hover{
-      transform: translateY(-100%);
-    }
+  }
+  .jigoujieshao .hotlist .m-hostcourseitem:before,
+  .jigoujieshao .hotlist .m-hostcourseitem:after {
+    content: " ";
+    display: table;
+  }
+  .jigoujieshao .hotlist .m-hostcourseitem:after {
+    clear: both;
+  }
+  .jigoujieshao .hotlist .m-hostcourseitem:before,
+  .jigoujieshao .hotlist .m-hostcourseitem:after {
+    content: " ";
+    display: table;
+  }
+  .jigoujieshao .hotlist .m-hostcourseitem:after {
+    clear: both;
   }
   .jigoujieshao .hotlist .m-hostcourseitem img {
     float: left;
@@ -561,6 +574,9 @@ body {
     height: 50px;
   }
   .jigoujieshao .hotlist .m-hostcourseitem .info h4 {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
     font-size: 14px;
     font-weight: normal;
     color: #333333;
