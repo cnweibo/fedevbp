@@ -17,8 +17,7 @@
     function getElementsByClassName(className,root) {    
         // helper函数，判断a数组是否是b数组的子集
         function isAinB(a,b) {
-            for (var i = 0; i < a.length; i++) {
-                 
+            for (var i = 0; i < a.length; i++) { 
                 // 对a[i]判断
                 for (var j = 0; j < b.length; j++) {
                     if (a[i].trim() == b[j].trim()){
@@ -33,7 +32,6 @@
             };
             return true;
         }
-    //root：父节点，tagName：该节点的标签名。 这两个参数均可有可无
         if(root){
             root=typeof root=="string" ? document.getElementById(root) : root;   
         }else{
@@ -56,7 +54,7 @@
             return tagAll;
         }
     }
-    // querySelector兼容处理
+    // querySelectorAll兼容处理
     if (!document.querySelectorAll) {
         document.querySelectorAll = function (selectors) {
             var style = document.createElement('style'), elements = [], element;
@@ -76,14 +74,13 @@
             return elements;
         };
     }
-
+    // querySelector兼容处理
     if (!document.querySelector) {
         document.querySelector = function (selectors) {
             var elements = document.querySelectorAll(selectors);
             return (elements.length) ? elements[0] : null;
         };
     }
-
     // 用于在IE6和IE7浏览器中，支持Element.querySelectorAll方法
     var qsaWorker = (function () {
         var idAllocator = 10000;
@@ -111,6 +108,7 @@
         // Return the one this browser wants to use
         return document.createElement('div').querySelectorAll ? qsaWorkerWrap : qsaWorkerShim;
     })();
+    // search icon hover handling
     var search = document.querySelector('li .search');
     addEvent(search,'mouseenter',function(ev){
         search.setAttribute('src','images/searchhover.png');
@@ -118,13 +116,13 @@
     addEvent(search,'mouseleave',function(ev){
         search.setAttribute('src','images/search.png');
     });
+    // course hover detail display triggering
     var course = getElementsByClassName('course col1-4');
     for (var i = 0; i < course.length; i++) {
     	addEvent(course[i],'mouseenter', function(e) {
             // IE8兼容性支持
             var that = e.srcElement || e.target;
     		var detail = getElementsByClassName('detail',that)[0];
-            console.log(this);
     		if (detail.className.indexOf('j-hidden')) {
 	    		detail.classList.remove('j-hidden');
                 detail.classList.add('j-coursehovered');
@@ -141,4 +139,44 @@
 	    	}
 		});
     }
+    // ajax handling
+    var XMLHttpFactories = [
+       function() {return new XMLHttpRequest()},
+       function () {return new ActiveXObject("Msxml2.XMLHTTP")},
+       function () {return new ActiveXObject("Msxml3.XMLHTTP")},
+       function () {return new ActiveXObject("Microsoft.XMLHTTP")}];
+    function createXMLHTTPObject() {
+       var xmlhttp = false;
+       for(i=0; i<XMLHttpFactories.length; i++) {
+           try {
+               xmlhttp = XMLHttpFactories[i]();
+           }
+           catch(e) {
+               continue;
+           }
+           break;
+       }
+       return xmlhttp;
+    }
+    function ajaxread(file, postData) {
+       var req = createXMLHTTPObject();
+       if(!req) return;
+       req.onreadystatechange = function() {
+           if (req.readyState != 4) return;
+           if (req.status != 200 && req.status != 304) {
+               alert('HTTP error ' + req.status);
+               return;
+           }
+           console.dir(req.responseText);
+           // updateobj('span', req.responseXML.getElementsByTagName('username')[0].firstChild.nodeValue);
+       }
+       req.open('GET', file, true);
+       if (req.readyState == 4) return;
+       req.send(postData);
+    }
+    function updateobj(obj, data) {
+       document.getElementsByTagName(obj)[0].firstChild.nodeValue = data;
+    }
+    ajaxread('http://study.163.com/webDev/hostcoursesByCategory.htm');
+    
 }())
