@@ -1,4 +1,4 @@
-(function(){
+
     // String.trim IE兼容处理
     String.prototype.trim = function ()  
     {  
@@ -204,6 +204,13 @@ function extend(o1, o2){
         return this;
       }
     }
+    function insertHotCourse(p,data){
+        var item = document.createElement('div');
+        item.setAttribute('class','m-hostcourseitem');
+        var innerhtml = ' <img src="'+data.middlePhotoUrl+'" alt=""><div class="info"><h4>'+data.name+'</h4><div class="studentnum">'+data.learnerCount+'</div></div>';
+        item.innerHTML = innerhtml;
+        p.appendChild(item);
+    }
 // hotList class constructor function
 function hotList(configuration) {
     // configuration layout{container: '',url:''}
@@ -232,6 +239,7 @@ hotList.prototype.populate = function() {
        }
        return xmlhttp;
     }
+
     function ajaxread(file, postData, hotlist) {
        var req = createXMLHTTPObject();
        if(!req) return;
@@ -242,14 +250,10 @@ hotList.prototype.populate = function() {
                return;
            }
            var data = window.hotlistdata = JSON.parse(req.responseText);
-           var parent = document.getElementsByClassName('hotlist')[0];
+           var parent = document.getElementsByClassName('hotcourses')[0];
            for (var i = 0; i < 10; i++) {
-               var item = document.createElement('div');
-               item.setAttribute('class','m-hostcourseitem');
-               var innerhtml = ' <img src="'+data[i].middlePhotoUrl+'" alt=""><div class="info"><h4>'+data[i].name+'</h4><div class="studentnum">'+data[i].learnerCount+'</div></div>';
-               item.innerHTML = innerhtml;
-               parent.appendChild(item);
-           };
+               insertHotCourse(parent,data[i]);
+           }
            hotlist.emit('populated');
        }
        req.open('GET', file, false);
@@ -266,4 +270,3 @@ hotList.prototype.populate = function() {
     var hl = new hotList();
     hl.on('populated',animateFunc);
     hl.populate();
-}())

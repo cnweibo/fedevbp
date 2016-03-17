@@ -539,11 +539,16 @@ body {
     padding-bottom: 20px;
     background-color: #ffffff;
   }
+  .jigoujieshao .hotlist .hotcourses {
+    overflow: hidden;
+  }
   .jigoujieshao .hotlist .head {
     padding: 20px;
     font-size: 16px;
     font-weight: normal;
     color: #333333;
+    background-color: white;
+    position: relative;
   }
   .jigoujieshao .hotlist hr {
     border: 1px solid #eeeeee;
