@@ -139,6 +139,80 @@
 	    	}
 		});
     }
+// helper functions
+// 将HTML转换为节点
+function html2node(str){
+  var container = document.createElement('div');
+  container.innerHTML = str;
+  return container.children[0];
+}
+
+// 赋值属性
+// extend({a:1}, {b:1, a:2}) -> {a:1, b:1}
+function extend(o1, o2){
+  for(var i in o2) if(typeof o1[i] === 'undefined'){
+    o1[i] = o2[i]
+  } 
+  return o1
+}
+
+
+// customEvent事件系统
+    var eventer = {
+      // 注册事件
+      on: function(event, fn) {
+        var handles = this._handles || (this._handles = {}),
+          calls = handles[event] || (handles[event] = []);
+
+        // 找到对应名字的栈
+        calls.push(fn);
+
+        return this;
+      },
+      // 解绑事件
+      off: function(event, fn) {
+        if(!event || !this._handles) this._handles = {};
+        if(!this._handles) return;
+
+        var handles = this._handles , calls;
+
+        if (calls = handles[event]) {
+          if (!fn) {
+            handles[event] = [];
+            return this;
+          }
+          // 找到栈内对应listener 并移除
+          for (var i = 0, len = calls.length; i < len; i++) {
+            if (fn === calls[i]) {
+              calls.splice(i, 1);
+              return this;
+            }
+          }
+        }
+        return this;
+      },
+      // 触发事件
+      emit: function(event){
+        var args = [].slice.call(arguments, 1),
+          handles = this._handles, calls;
+
+        if (!handles || !(calls = handles[event])) return this;
+        // 触发所有对应名字的listeners
+        for (var i = 0, len = calls.length; i < len; i++) {
+          calls[i].apply(this, args)
+        }
+        return this;
+      }
+    }
+// hotList class constructor function
+function hotList(configuration) {
+    // configuration layout{container: '',url:''}
+    configuration = configuration || {container: document.getElementsByClassName('hotlist')[0],url:'/hotcourselist.json'};
+    extend(this,configuration);
+    extend(this,eventer);
+}
+hotList.prototype.populate = function() {
+    var that = this; // cache hotList this pointer
     // ajax handling
     var XMLHttpFactories = [
        function() {return new XMLHttpRequest()},
@@ -158,7 +232,7 @@
        }
        return xmlhttp;
     }
-    function ajaxread(file, postData) {
+    function ajaxread(file, postData, hotlist) {
        var req = createXMLHTTPObject();
        if(!req) return;
        req.onreadystatechange = function() {
@@ -176,7 +250,7 @@
                item.innerHTML = innerhtml;
                parent.appendChild(item);
            };
-           // updateobj('span', req.responseXML.getElementsByTagName('username')[0].firstChild.nodeValue);
+           hotlist.emit('populated');
        }
        req.open('GET', file, false);
        if (req.readyState == 4) return;
@@ -185,5 +259,11 @@
     function updateobj(obj, data) {
        document.getElementsByTagName(obj)[0].firstChild.nodeValue = data;
     }
-    ajaxread('/hotcourselist.json');
+    ajaxread('/hotcourselist.json','',that);
+    
+}
+
+    var hl = new hotList();
+    hl.on('populated',animateFunc);
+    hl.populate();
 }())

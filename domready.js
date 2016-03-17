@@ -1,4 +1,4 @@
-$(function() {
+var animateFunc = function() {
 	var hotcourseRemainingNodes = [];
 	setTimeout(function() {
 		for (var i = 0; i < 10; i++) {
@@ -40,4 +40,4 @@ $(function() {
             );
 	},2000);
 
-}())
+}
