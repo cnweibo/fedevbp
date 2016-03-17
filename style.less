@@ -103,6 +103,61 @@ body{
   display: none;
 }
 /* page components */
+.modallogin{
+  display: table-cell;
+  vertical-align: middle;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.7);
+  text-align: center;
+  font-family: "微软雅黑",sans-serif;
+  .fixedalign{
+    position: relative;
+    display: inline-block;
+    padding-left: 40px;
+    padding-right: 50px;
+    background-color: #ffffff;
+    .close{
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
+    .title{
+      margin-top: 30px;
+      text-align: left;
+      font-size: 18px;
+      color: #444444;
+    }
+    .username,.password{
+      background-color: #fafafa;
+      margin-bottom: 20px;
+      margin-top: 20px;
+      input{
+        line-height: 45px;
+        font-size: 16px;
+        color: #cccccc;
+
+      }
+    }
+    button{
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 45px;
+      line-height: 45px;
+      font-size: 16px;
+      background-color: #19a138;
+      color: #ffffff;
+    }
+//    position: absolute;
+//    top: 50%;
+//    left: 50%;
+//    transform: translate(-50%,-50%);
+  }
+}
 .l-topremovable{
   line-height: 36px;
   background-color: #f3f3f3;
@@ -325,6 +380,9 @@ body{
 			}
 		}
         .preview{
+          h4,h5,p{
+            margin-left: 5px;
+          }
           cursor: pointer;
           @media (min-width: @mediabreakpoint) {
           	border: 1px solid #F1F1F1;
@@ -564,6 +622,12 @@ body{
       color: #ffffff;
       .logo{
         margin-bottom: 36px;
+        a{
+          display: inline-block;
+          img{
+            width: 100%;
+          }
+        }
       }
       .copyright,.beian{
         margin-left: 28px;
