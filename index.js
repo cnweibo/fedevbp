@@ -256,7 +256,7 @@ hotList.prototype.populate = function() {
            }
            hotlist.emit('populated');
        }
-       req.open('GET', file, false);
+       req.open('GET', file, true);
        if (req.readyState == 4) return;
        req.send(postData);
     }
