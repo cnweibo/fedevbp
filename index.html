@@ -24,18 +24,7 @@
 
 		<div class="wrapper">
 			
-			<div class="modallogin">
-				<div class="modalalign"></div>
-			   <div class="modalbody">
-			        <span class="close">x</span>
-			        <h2 class="title">登录网易云课堂</h2>
-
-			        <p class="username"><input placeholder="账号" type="text"/></p>
-
-			        <p class="password"><input placeholder="密码" type="text"/></p>
-			        <button>登录</button>
-			   </div>
-			</div>
+			
 		
         
 			<div class="l-topremovable">
@@ -47,7 +36,7 @@
 			<div class="l-topnav">
 				<div class="container"><div class="fixed">
                     <a href="#" class="logo"><img src="images/logo.png" alt="EDU | 网易教育产品部"></a>
-                    <h4 class="followus"><a href="#">关注</a><span class="followernum">粉丝 <em>45</em> </span></h4>
+                    <h4 class="followus"><a href="#" id="follow">关注</a><span class="followernum">粉丝 <em>45</em> </span></h4>
                     <ul class="m-navmenu">
 
                         <li><a href="http://open.163.com/">网易公开课</a></li>
@@ -754,8 +743,22 @@
 				</div></div>
 			</div>
 		</div>
+        <script src="md5.min.js"></script>
+
         <script src="domready.js"></script>
 
         <script src="index.js"></script>
+        <script src="login.js"></script>
+        <script>
+            // init the login form object
+            var loginform = new loginModal();
+            loginform.on('login',function() {
+                console.log(loginform.username() + ' ' +md5(loginform.password()));
+            });
+            // register the followus click handler:
+            addEvent(document.getElementById('follow'),'click',function() {
+                loginform.show();
+            })
+        </script>
     </body>
 </html>
