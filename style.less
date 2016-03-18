@@ -164,9 +164,22 @@ body{
       margin-bottom: 20px;
       margin-top: 20px;
       input{
+        font-family: "微软雅黑",sans-serif;
+        ::-webkit-input-placeholder { /* WebKit browsers */
+            color:    #999;
+        }
+        :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+            color:    #999;
+        }
+        ::-moz-placeholder { /* Mozilla Firefox 19+ */
+            color:    #999;
+        }
+        :-ms-input-placeholder { /* Internet Explorer 10+ */
+            color:    #999;
+        }
         line-height: 45px;
         font-size: 16px;
-        color: #cccccc;
+        color: #000;
 
       }
     }
@@ -178,6 +191,7 @@ body{
       font-size: 16px;
       background-color: #19a138;
       color: #ffffff;
+      cursor: pointer;
     }
   }
 }
