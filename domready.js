@@ -1,5 +1,5 @@
 var animateFunc = function() {
-    var hotcourses = document.getElementsByClassName('hotcourses')[0];
+    var hotcourses = getElementsByClassName('hotcourses')[0];
     window.hotcourseRemainingNodes = [];
     hotcourses.style.height = getComputedStyle(hotcourses).height;
     insertHotCourse(hotcourses,hotlistdata[10]); //todo: module dependency方案引入解决加载顺序依赖问题
@@ -21,12 +21,10 @@ var animateFunc = function() {
             var margintop = window.getComputedStyle(first).marginTop;
             var done = function(){
                 return function(){
-                    console.log(first);
                     first.parentNode.removeChild(first);
                     first.style.marginTop = margintop;
                     $('.hotlist .m-hostcourseitem:first')[0].parentNode.appendChild(hotcourseRemainingNodes.pop());
                     //first.style.cssText = "margin-top: "+ margintop ;
-                    console.log(first);
 
                     hotcourseRemainingNodes.push(first);
                 }

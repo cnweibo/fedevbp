@@ -13,6 +13,10 @@
             el.attachEvent("on"+event, handler);
         }
     }
+    // getComputedStyle兼容处理 
+    if( !window.getComputedStyle) {
+        window.getComputedStyle = function(e) {return e.currentStyle};
+    }
     // getElementsByClassName兼容处理函数
     function getElementsByClassName(className,root) {    
         // helper函数，判断a数组是否是b数组的子集
@@ -214,7 +218,7 @@ function extend(o1, o2){
 // hotList class constructor function
 function hotList(configuration) {
     // configuration layout{container: '',url:''}
-    configuration = configuration || {container: document.getElementsByClassName('hotlist')[0],url:'/hotcourselist.json'};
+    configuration = configuration || {container: getElementsByClassName('hotlist')[0],url:'/hotcourselist.json'};
     extend(this,configuration);
     extend(this,eventer);
 }
@@ -250,7 +254,7 @@ hotList.prototype.populate = function() {
                return;
            }
            var data = window.hotlistdata = JSON.parse(req.responseText);
-           var parent = document.getElementsByClassName('hotcourses')[0];
+           var parent = getElementsByClassName('hotcourses')[0];
            for (var i = 0; i < 10; i++) {
                insertHotCourse(parent,data[i]);
            }
