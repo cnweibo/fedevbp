@@ -103,21 +103,48 @@ body{
   display: none;
 }
 /* page components */
+// .mp{
+//   position: fixed;
+//   // width: 100%;
+//   // height: 800px;
+//   z-index: 999;
+//   top: 0;
+//   bottom: 0;
+//   left: 0;
+//   right: 0;
+//   background-color: rgba(0,0,0,0.7);
+//   text-align: center;
+//   .mpsub{
+//     display: inline-block;
+//     background-color: green;
+//     .vcell{
+//       display: table-cell;
+//       vertical-align: middle;
+//     }
+//   }
+// }
 .modallogin{
-  display: table-cell;
-  vertical-align: middle;
   position: fixed;
   z-index: 999;
   top: 0;
-  bottom: 0;
   left: 0;
+  bottom: 0;
   right: 0;
+  background-color: rgba(0,0,0,0.7);
   background-color: rgba(0,0,0,0.7);
   text-align: center;
   font-family: "微软雅黑",sans-serif;
-  .fixedalign{
+  .modalalign{
+    display: inline-block;
+    vertical-align: middle;
+    width: 1px;
+    height: 100%;
+    line-height: 100%;
+  }
+  .modalbody{
     position: relative;
     display: inline-block;
+    vertical-align: middle;
     padding-left: 40px;
     padding-right: 50px;
     background-color: #ffffff;
@@ -152,10 +179,6 @@ body{
       background-color: #19a138;
       color: #ffffff;
     }
-//    position: absolute;
-//    top: 50%;
-//    left: 50%;
-//    transform: translate(-50%,-50%);
   }
 }
 .l-topremovable{
