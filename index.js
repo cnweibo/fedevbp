@@ -222,52 +222,19 @@ function hotList(configuration) {
     extend(this,configuration);
     extend(this,eventer);
 }
+hotList.prototype.ajaxsucc = function(data) {
+    window.hotlistdata = data;
+    var parent = getElementsByClassName('hotcourses')[0];
+    for (var i = 0; i < 10; i++) {
+        insertHotCourse(parent,data[i]);
+    }
+    this.emit('populated');
+}
 hotList.prototype.populate = function() {
     var that = this; // cache hotList this pointer
     // ajax handling
-    var XMLHttpFactories = [
-       function() {return new XMLHttpRequest()},
-       function () {return new ActiveXObject("Msxml2.XMLHTTP")},
-       function () {return new ActiveXObject("Msxml3.XMLHTTP")},
-       function () {return new ActiveXObject("Microsoft.XMLHTTP")}];
-    function createXMLHTTPObject() {
-       var xmlhttp = false;
-       for(i=0; i<XMLHttpFactories.length; i++) {
-           try {
-               xmlhttp = XMLHttpFactories[i]();
-           }
-           catch(e) {
-               continue;
-           }
-           break;
-       }
-       return xmlhttp;
-    }
-
-    function ajaxread(file, postData, hotlist) {
-       var req = createXMLHTTPObject();
-       if(!req) return;
-       req.onreadystatechange = function() {
-           if (req.readyState != 4) return;
-           if (req.status != 200 && req.status != 304) {
-               alert('HTTP error ' + req.status);
-               return;
-           }
-           var data = window.hotlistdata = JSON.parse(req.responseText);
-           var parent = getElementsByClassName('hotcourses')[0];
-           for (var i = 0; i < 10; i++) {
-               insertHotCourse(parent,data[i]);
-           }
-           hotlist.emit('populated');
-       }
-       req.open('GET', file, true);
-       if (req.readyState == 4) return;
-       req.send(postData);
-    }
-    function updateobj(obj, data) {
-       document.getElementsByTagName(obj)[0].firstChild.nodeValue = data;
-    }
-    ajaxread('/hotcourselist.json','',that);
+    
+    ajax.get('/hotcourselist.json','',that.ajaxsucc.bind(that));
     
 }
 
