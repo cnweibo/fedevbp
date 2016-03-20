@@ -112,6 +112,27 @@
         // Return the one this browser wants to use
         return document.createElement('div').querySelectorAll ? qsaWorkerWrap : qsaWorkerShim;
     })();
+    // IE8 function.bind兼容
+    if (!Function.prototype.bind) { 
+        Function.prototype.bind = function (oThis) { 
+        if (typeof this !== "function") { 
+        throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable"); 
+        } 
+        var aArgs = Array.prototype.slice.call(arguments, 1), 
+        fToBind = this, 
+        fNOP = function () {}, 
+        fBound = function () { 
+        return fToBind.apply(this instanceof fNOP && oThis 
+        ? this
+        : oThis, 
+        aArgs.concat(Array.prototype.slice.call(arguments))); 
+        }; 
+        fNOP.prototype = this.prototype; 
+        fBound.prototype = new fNOP(); 
+        return fBound; 
+        }; 
+    } 
+    
     // search icon hover handling
     var search = document.querySelector('li .search');
     addEvent(search,'mouseenter',function(ev){
@@ -234,10 +255,19 @@ hotList.prototype.populate = function() {
     var that = this; // cache hotList this pointer
     // ajax handling
     
-    ajax.get('/hotcourselist.json','',that.ajaxsucc.bind(that));
+    ajax.get('http://study.163.com/webDev/hotcouresByCategory.htm','',that.ajaxsucc.bind(that));
     
 }
 
+// initialize hotlist course component and populate the course
     var hl = new hotList();
     hl.on('populated',animateFunc);
     hl.populate();
+// check the disimissNotifier cookie
+    if (getCookie('dismissNotifier')){
+        getElementsByClassName('l-topremovable')[0].classList.add('j-hidden');
+    }
+// change state for the followus visual indication
+    if (getCookie('followSuc')){
+        getElementsByClassName('followus')[0].classList.add('j-followed');
+    }

@@ -14,7 +14,6 @@
 		<script src="respond.min.js"></script>
 		<script src="jquery.js"></script>
 
-
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     </head>
     <body>
@@ -23,9 +22,6 @@
         <![endif]-->
 
 		<div class="wrapper">
-			
-			
-		
         
 			<div class="l-topremovable">
                 <div class="container">
@@ -36,7 +32,7 @@
 			<div class="l-topnav">
 				<div class="container"><div class="fixed">
                     <a href="#" class="logo"><img src="images/logo.png" alt="EDU | 网易教育产品部"></a>
-                    <h4 class="followus"><a href="#" id="follow">关注</a><span class="followernum">粉丝 <em>45</em> </span></h4>
+                    <h4 class="followus"><a href="#" id="follow">关注</a><a href="#" id="followed">已关注 | <span class="cancelfollow">取消</span></a><span class="followernum">粉丝 <em>45</em> </span></h4>
                     <ul class="m-navmenu">
 
                         <li><a href="http://open.163.com/">网易公开课</a></li>
@@ -48,16 +44,19 @@
                 </div>
 			</div>
 			<div class="l-banner">
-                <div class="container">
-
-                    <img class="active" src="images/banner1.jpg" alt="知识改变世界，教育改变未来，遇见更好的自己">
-                    <img src="" alt="知识改变世界，教育改变未来，遇见更好的自己">
-                    <img src="" alt="知识改变世界，教育改变未来，遇见更好的自己">
-                    <p class="bannernav">
-                        <span class="navpoint active"></span>
-                        <span class="navpoint"></span>
-                        <span class="navpoint"></span>
-                    </p>
+                <div class="container slidercontainer">
+                    <div class="m-slider">
+                        <div class="m-slide">
+                            <img class="banner active" src="images/banner1.jpg" alt="知识改变世界，教育改变未来，遇见更好的自己">
+                            <img class="banner" src="images/banner2.jpg" alt="知识改变世界，教育改变未来，遇见更好的自己">
+                            <img class="banner" src="images/banner3.jpg" alt="知识改变世界，教育改变未来，遇见更好的自己">
+                        </div>
+                        <p class="bannernav">
+                            <span class="navpoint active"></span>
+                            <span class="navpoint"></span>
+                            <span class="navpoint"></span>
+                        </p>
+                    </div>
                 </div>
             </div>
             <div class="l-featured-product">
@@ -697,6 +696,14 @@
 	                        <div class="video">
 	                            <h4>观看下面的视频来了解吧</h4>
 	                            <img src="images/video.png" alt="" class="videothumb">
+                                <div class="m-videointro j-hidden">
+                                    <div class="mask"></div>
+                                    <div class="videocontainer">
+                                        <button class="closevedio">X</button>
+                                        <h2>请观看下面的视频</h2>
+                                        <img src="images/videointro.jpg" alt="机构视频">
+                                    </div>
+                                </div>
 	                        </div>
                     	</div>
                         <hr>
@@ -743,22 +750,81 @@
 				</div></div>
 			</div>
 		</div>
+        <!-- mock js to mock backend data-->
+       
         <script src="md5.min.js"></script>
         <script src="ajax.js"></script>
 
         <script src="domready.js"></script>
-
+        <script src="cookie.js"></script>
+        <script src="followus.js"></script>
+        
         <script src="index.js"></script>
         <script src="login.js"></script>
+        <script src="slider.js"></script>
+
         <script>
             // init the login form object
             var loginform = new loginModal();
             loginform.on('login',function() {
-                console.log(loginform.username() + ' ' +md5(loginform.password()));
+                // do login job here
+                ajax.get('http://study.163.com/webDev/login.htm?userName='+loginform.username()+'&password='+md5(loginform.password()),'', function (data) {
+                    if (data == 0){
+                        loginform.resetForm();
+                        loginform.hide();
+                        setCookie('loginSucc','loggedin',1);
+                        followus();
+                    }
+                    else{
+                        loginform.loginError();
+                    }
+                });
+                // console.log(loginform.username() + ' ' +md5(loginform.password()));
             });
             // register the followus click handler:
             addEvent(document.getElementById('follow'),'click',function() {
-                loginform.show();
+                // if loginSucc cookie does not exist, show form
+                if (getCookie('loginSucc')){
+                    // has logged into the system  and call the followus api
+                    followus();                  
+                }else{
+                    loginform.show();
+                }
+            });
+            // register the videothumb click handler
+            addEvent(getElementsByClassName('videothumb')[0],'click',function(e) {
+                getElementsByClassName('m-videointro')[0].classList.remove('j-hidden');
+                e.preventDefault();
+            });
+            // register the close button for video playing screen
+            addEvent(getElementsByClassName('closevedio')[0],'click',function() {
+                getElementsByClassName('m-videointro')[0].classList.add('j-hidden');
+            })
+            addEvent(getElementsByClassName('cancelfollow',document.getElementById('followed'))[0],'click', function() {
+                setCookie('followSuc','',-1);
+                unfollowus();
+            });
+            addEvent(getElementsByClassName('dismiss')[0],'click',function() {
+                setCookie('dismissNotifier','true',100);
+                getElementsByClassName('l-topremovable')[0].classList.add('j-hidden');
+            })
+            var slider = new Slider({
+                images: [
+                    'images/banner1.jpg',
+                    'images/banner2.jpg',
+                    'images/banner3.jpg'
+                ]
+            });
+            for (var i = 0; i < slider.imgs.length; i++) {
+                function handler(i) {
+                    return function() {
+                        slider.nav(i);
+                    }
+                }
+                addEvent(slider.navpoints[i],'click',handler(i));
+            }
+            addEvent(slider.activeImage,'click',function() {
+                
             })
         </script>
     </body>
