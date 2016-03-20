@@ -808,6 +808,7 @@
                 setCookie('dismissNotifier','true',100);
                 getElementsByClassName('l-topremovable')[0].classList.add('j-hidden');
             })
+            // banner slider初始化
             var slider = new Slider({
                 images: [
                     'images/banner1.jpg',
@@ -821,10 +822,14 @@
                         slider.nav(i);
                     }
                 }
-                addEvent(slider.navpoints[i],'click',handler(i));
+                addEvent(slider.navpoints[i],'click',function(i) {
+                    return function(e) {
+                        
+                    }
+                }(i));
             }
-            addEvent(slider.activeImage,'click',function() {
-                
+            addEvent(slider.activeImage,'click',function(e) {
+                console.dir(e);
             })
         </script>
     </body>
