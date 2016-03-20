@@ -817,17 +817,45 @@
                 ]
             });
             for (var i = 0; i < slider.imgs.length; i++) {
-                function handler(i) {
-                    return function() {
-                        slider.nav(i);
-                    }
-                }
+                
                 addEvent(slider.navpoints[i],'click',function(i) {
                     return function(e) {
-                        
+                        slider.activeImage.style.opacity = 0;
+                        slider.nav(i);
+                        var animateTimer = setInterval(step, 20);
+                        var alpha = 0;
+                        function step() {
+                            alpha = alpha +  4;
+                            slider.activeImage.style.opacity = alpha/100;
+                            if (alpha >=100){
+                                slider.activeImage.style.opacity =1;
+                                clearTimeout(animateTimer);
+                            }
+                        }
                     }
                 }(i));
-            }
+            };
+            (function() {
+                // start a banner 5s timer
+                var animateTimer5s = setInterval(stepBanner, 5000);
+                var bannerIdx = 0;
+                function stepBanner() {
+                    bannerIdx++;
+                    slider.activeImage.style.opacity = 0;
+                    slider.nav(bannerIdx%3);
+                    var animateTimer = setInterval(step, 20);
+                    var alpha = 0;
+                    function step() {
+                        alpha = alpha +  4;
+                        slider.activeImage.style.opacity = alpha/100;
+                        if (alpha >=100){
+                            slider.activeImage.style.opacity =1;
+                            clearTimeout(animateTimer);
+                        }
+                    }   
+                }
+            }());
+            
             addEvent(slider.activeImage,'click',function(e) {
                 console.dir(e);
             })
