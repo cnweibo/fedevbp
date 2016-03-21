@@ -73,17 +73,29 @@
         poptab: function(tabidx) { // populate all the data in this tab 
             var that = this; // cache the coursetabs object
             ajax.get(this.tabs[tabidx].url,'',function(data) {
-                            for (var i = 0; i < data.list.length; i++) {
-
-                                var _tpl = '<div class="m-tabs">\
-                    <div class="tab">\
-                        <div class="active">产品设计</div>\
-                        <div class="inactive">编程语言</div>\
+                var tabcontainer ='<div class="maincontent m-tabs">\
+                        <div class="tab">\
+                            <div class="active">产品设计</div>\
+                            <div class="inactive">编程语言</div>\
+                        </div>\
+                        <div class="content">\
+                            <!-- paginator here -->\
+                        </div>  <!-- $content -->\
                     </div>\
-                    <div class="content">\
-                        <div class="row row-bgap20">\
-                            <div class="course col1-4">\
-                                <div class="preview"><img src="'+data.list[i].bigPhotoUrl+'" alt="混音全揭秘，舞曲实战篇，揭秘音乐，揭秘实战"/>\
+                ' ;
+                that.parent.insertAdjacentElement('afterbegin',u.html2node(tabcontainer));
+                var contentcontainer = getElementsByClassName('content',that.parent)[0];
+                for (var i = 0; i < data.list.length; i++) {
+                    if (i%4==0){
+                        // insert a row every four course
+                        var rowhtml = '<div class="row row-bgap20 row'+(i/4)+' ">\
+                            </div>\
+                        ';
+                        contentcontainer.appendChild(u.html2node(rowhtml));
+                        var rownode = getElementsByClassName('row'+(i/4))[0];
+                    }
+                    var _tpl = '<div class="course col1-4">\
+                                <div class="preview"><img src="'+data.list[i].middlePhotoUrl+'" alt="混音全揭秘，舞曲实战篇，揭秘音乐，揭秘实战"/>\
                                     <h4 class="title">'+data.list[i].name+'</h4>\
                                     <h5 class="category">音频帮</h5>\
                                     <p class="studentsnum">'+data.list[i].learnerCount+'</p>\
@@ -92,7 +104,7 @@
                                 <div class="detail j-hidden">\
                                     <div class="row">\
                                         <div class="col1-2">\
-                                            <img src="'+data.list[i].bigPhotoUrl+'" alt="手绘画系列教程" class="imagedesc"/>\
+                                            <img src="'+data.list[i].middlePhotoUrl+'" alt="手绘画系列教程" class="imagedesc"/>\
                                         </div>\
                                         <div class="col1-2">\
                                             <div class="textdesc">\
@@ -108,27 +120,9 @@
                                     </div>\
                                 </div>\
                             </div> <!-- course -->\
-                        </div>\
-                        <div class="m-paginator">\
-                            <a href="" class="left">&lt;</a>\
-                            <ol class="paginator">\
-                                <li><a href="">1</a></li>\
-                                <li><a href="">2</a></li>\
-                                <li class="active"><a href="">3</a></li>\
-                                <li><a href="">4</a></li>\
-                                <li><a href="">5</a></li>\
-                                <li><a href="">6</a></li>\
-                                <li><a href="">7</a></li>\
-                                <li><a href="">8</a></li>\
-                            </ol>\
-                            <a href="" class="right">&gt;</a>\
-                        </div>\
-                    </div>  <!-- $content -->\
-                </div>\
-                ' ;
-                that.parent.appendChild(u.html2node(_tpl));
-
-                            }
+                    ' ;
+                    rownode.appendChild(u.html2node(_tpl));
+                }
                         
 
 
