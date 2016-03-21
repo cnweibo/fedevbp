@@ -1,7 +1,7 @@
 /* import css framework */
 /* global variables */
 @gap: 20px; /*gap between grid columns*/
-@mediabreakpoint:  800px; //  1205px;
+@mediabreakpoint:  1200px; //  1205px;
 @import (reference) "bower_components/bootstrap/less/bootstrap.less";
 /* mixins */
 @font-face {
@@ -89,12 +89,14 @@ body{
 		bottom: 0;
 		width: 200%;
 		//          height: 100%;
-		margin-left: -@gap;
+		// margin-left: -@gap/2;
 		background-color: white;
-		padding-left: @gap;
-		margin-top: -@gap;
-		margin-bottom: -@gap;
-		padding-top: @gap;
+    margin: -@gap/2;
+    padding: @gap/2;
+		// padding-left: @gap/2;
+		// margin-top: -@gap/2;
+		// margin-bottom: -@gap;
+		// padding-top: @gap/2;
 	}
   
 }
@@ -473,7 +475,7 @@ body{
           }
         }
         .detail{
-			
+			    
           .imagedesc{
             width: 100%;
           }
@@ -500,13 +502,16 @@ body{
           .detailtext{
           	position: absolute;
           	bottom: 0;
-          	padding: 20px 0;
-          	margin-left: -@gap;
-          	padding-left: @gap;
+            height: 84px;
+            overflow: hidden;
+          	padding: 24px 0;
+          	margin-left: -@gap/2;
+          	padding-left: @gap/2;
+            padding-right: 20px;
             font-size: 14px;
             line-height: 24px;
             color: #666666;
-          	// background-color: #F8F8F8;
+          	background-color: #F8F8F8;
           }
         }
 
