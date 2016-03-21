@@ -141,29 +141,7 @@
     addEvent(search,'mouseleave',function(ev){
         search.setAttribute('src','images/search.png');
     });
-    // course hover detail display triggering
-    var course = getElementsByClassName('course col1-4');
-    for (var i = 0; i < course.length; i++) {
-    	addEvent(course[i],'mouseenter', function(e) {
-            // IE8兼容性支持
-            var that = e.srcElement || e.target;
-    		var detail = getElementsByClassName('detail',that)[0];
-    		if (detail.className.indexOf('j-hidden')) {
-	    		detail.classList.remove('j-hidden');
-                detail.classList.add('j-coursehovered');
-	    		// detail.className +=' j-coursehovered';
-	    	}
-    	});
-		addEvent(course[i],'mouseleave', function(e) {
-			var that = e.srcElement || e.target;
-			var detail = getElementsByClassName('detail',that)[0];
-			if (detail.className.indexOf('j-hidden')==-1) {
-	    		detail.classList.add('j-hidden');
-                detail.classList.remove('j-coursehovered');
-	    		// detail.className +=' j-coursehovered';
-	    	}
-		});
-    }
+    
 // helper functions
 // 将HTML转换为节点
 function html2node(str){

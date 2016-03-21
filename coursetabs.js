@@ -73,12 +73,13 @@
         poptab: function(tabidx) { // populate all the data in this tab 
             var that = this; // cache the coursetabs object
             ajax.get(this.tabs[tabidx].url,'',function(data) {
+                var _tabs = '<div class="tab">\ ';
+                for (var i = 0; i < that.tabs.length; i++) {//默认第0个tab为active
+                    _tabs += '<div class="'+(i==0?"active":"")+'">'+that.tabs[i].title+'</div>\ '
+                };
+                _tabs+='</div>\ ';
                 var tabcontainer ='<div class="maincontent m-tabs">\
-                        <div class="tab">\
-                            <div class="active">产品设计</div>\
-                            <div class="inactive">编程语言</div>\
-                        </div>\
-                        <div class="content">\
+                        '+ _tabs +'<div class="content">\
                             <!-- paginator here -->\
                         </div>  <!-- $content -->\
                     </div>\
@@ -97,7 +98,7 @@
                     var _tpl = '<div class="course col1-4">\
                                 <div class="preview"><img src="'+data.list[i].middlePhotoUrl+'" alt="混音全揭秘，舞曲实战篇，揭秘音乐，揭秘实战"/>\
                                     <h4 class="title">'+data.list[i].name+'</h4>\
-                                    <h5 class="category">音频帮</h5>\
+                                    <h5 class="category">'+data.list[i].provider+'</h5>\
                                     <p class="studentsnum">'+data.list[i].learnerCount+'</p>\
                                     <p class="price">'+data.list[i].price+'</p>\
                                 </div>\
@@ -116,16 +117,38 @@
                                         </div>\
                                     </div>\
                                     <div class="row">\
-                                        <p class="detailtext">'+data.list[i].description+'</p>\
+                                        <div class="btcontainer">\
+                                            <p class="detailtext">'+data.list[i].description+'</p>\
+                                        </div>\
                                     </div>\
                                 </div>\
                             </div> <!-- course -->\
                     ' ;
-                    rownode.appendChild(u.html2node(_tpl));
+                    var course = u.html2node(_tpl);
+                    rownode.appendChild(course);
+                    // course hover detail display triggering
+                    (function(){
+                        addEvent(course,'mouseenter', function(e) {
+                            // IE8兼容性支持
+                            var that = e.srcElement || e.target;
+                            var detail = getElementsByClassName('detail',that)[0];
+                            if (detail.className.indexOf('j-hidden')) {
+                                detail.classList.remove('j-hidden');
+                                detail.classList.add('j-coursehovered');
+                                // detail.className +=' j-coursehovered';
+                            }
+                        });
+                        addEvent(course,'mouseleave', function(e) {
+                            var that = e.srcElement || e.target;
+                            var detail = getElementsByClassName('detail',that)[0];
+                            if (detail.className.indexOf('j-hidden')==-1) {
+                                detail.classList.add('j-hidden');
+                                detail.classList.remove('j-coursehovered');
+                                // detail.className +=' j-coursehovered';
+                            }
+                        });
+                    }());
                 }
-                        
-
-
             });
         },
         navtotab: function(tabidx) {
