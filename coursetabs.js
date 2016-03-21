@@ -55,24 +55,30 @@
     function coursetabs(options) {
         this.tabs = [
             {
-                url: 'http://study.163.com/webDev/couresByCategory.htm?pageNo=1&psize=20&type=10',
+                url: 'http://study.163.com/webDev/couresByCategory.htm',
+                querystr: '?pageNo=1&psize=20&type=10',
                 title: '产品设计',
                 data: []
             },
             {
-                url: 'http://study.163.com/webDev/couresByCategory.htm?pageNo=1&psize=20&type=20',
+                url: 'http://study.163.com/webDev/couresByCategory.htm',
+                querystr: '?pageNo=1&psize=20&type=20',
                 title: '编程语言',
                 data: []
             },
 
         ];
         this.parent = getElementsByClassName('coursecontainer')[0];
+        this.pdisplaylimit = 8;
+        this.pagination = {};
+        this.datatype =10;
 
     }
     u.extend(coursetabs.prototype,{
         poptab: function(tabidx) { // populate all the data in this tab 
             var that = this; // cache the coursetabs object
-            ajax.get(this.tabs[tabidx].url,'',function(data) {
+            ajax.get(this.tabs[tabidx].url+this.tabs[tabidx].querystr,'',function(data) {
+                u.extend(that.pagination , data.pagination);
                 var _tabs = '<div class="tab">\ ';
                 for (var i = 0; i < that.tabs.length; i++) {//默认第0个tab为active
                     _tabs += '<div class="'+(i==0?"active":"")+'">'+that.tabs[i].title+'</div>\ '
@@ -124,6 +130,7 @@
                                 </div>\
                             </div> <!-- course -->\
                     ' ;
+                    // 由于在绑定事件时可能dom还没有插入，故而应该用事件解耦，后续改进
                     var course = u.html2node(_tpl);
                     rownode.appendChild(course);
                     // course hover detail display triggering
@@ -149,6 +156,17 @@
                         });
                     }());
                 }
+                // 插入paginator
+                var paginator = '<div class="m-paginator">\
+                        <a href="'+that.tabs[tabidx].url+that.tabs[tabidx].querystr+'" class="left">&lt;</a>\
+                        <ol class="paginator">\ ';
+                for (var i = 0; i < that.pdisplaylimit; i++) {
+                    paginator +='<li><a href="that.tabs[tabidx].url'+"?pageNo="+i+"&psize="+that.pagination.pageSize+"&type="+that.datatype+'">'+i+'</a></li>\ ';        
+                };
+                paginator += '</ol>\
+                        <a href="" class="right">&gt;</a>\
+                    </div>\ ';
+                contentcontainer.appendChild(html2node(paginator));
             });
         },
         navtotab: function(tabidx) {
