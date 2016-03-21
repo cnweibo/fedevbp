@@ -1,28 +1,6 @@
 
 
-!function(){
-  // 帮助函数
-  // ----------
-
-  // 将HTML转换为节点
-  function html2node(str){
-    var container = document.createElement('div');
-    container.innerHTML = str;
-    return container.children[0];
-  }
-
-  // 赋值属性
-  // extend({a:1}, {b:1, a:2}) -> {a:1, b:1}
-  function extend(o1, o2){
-    for(var i in o2) if(typeof o1[i] === 'undefined'){
-      o1[i] = o2[i]
-    } 
-    return o1
-  }
-
-
-
-
+!function(u){
   // loginModal
   // -------
 
@@ -41,17 +19,12 @@
      </div>\
   </div>\
   ';
-
-
-
-
-
   function loginModal(options){
     options = options || {};
     // 即 div.m-modal 节点
     this.container = this._layout.cloneNode(true);
     // 将options 复制到 组件实例上
-    extend(this, options);
+    u.extend(this, options);
 
 
     this._initEvent();
@@ -60,9 +33,9 @@
 
 
 
-  extend(loginModal.prototype, {
+  u.extend(loginModal.prototype, {
 
-    _layout: html2node(template),
+    _layout: u.html2node(template),
 
     // 显示弹窗
     show: function(content){
@@ -127,7 +100,7 @@
 
 
   // 使用混入Mixin的方式使得Slider具有事件发射器功能
-  extend(loginModal.prototype, eventer);
+  u.extend(loginModal.prototype, eventer);
   //          5.Exports
   // ----------------------------------------------------------------------
   // 暴露API:  Amd || Commonjs  || Global 
@@ -144,5 +117,5 @@
     window.loginModal = loginModal;
   }
 
-}()
+}(util)
 
