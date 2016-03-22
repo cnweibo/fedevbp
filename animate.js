@@ -11,28 +11,40 @@ var animateFunc = function() {
 		    item.innerHTML = innerhtml;
 		    hotcourseRemainingNodes.push(item);
 		};
-    var first = $('.hotlist .m-hostcourseitem:first')[0];
-    var heightParent = window.getComputedStyle(first.parentNode);
-    first.parentNode.style.cssText.height = heightParent;
+    var firsttocheck = getElementsByClassName('m-hostcourseitem')[0];
+    var heightParent = window.getComputedStyle(firsttocheck.parentNode);
+    firsttocheck.parentNode.style.cssText.height = heightParent;
 	var timer = window.setInterval(function() {
 
-            var first = $('.hotlist .m-hostcourseitem:first')[0];
+            var first = getElementsByClassName('m-hostcourseitem')[0];
             var heightParent = parseInt(window.getComputedStyle(first.parentNode).height);
             var margintop = window.getComputedStyle(first).marginTop;
             var done = function(){
                 return function(){
                     first.parentNode.removeChild(first);
                     first.style.marginTop = margintop;
-                    $('.hotlist .m-hostcourseitem:first')[0].parentNode.appendChild(hotcourseRemainingNodes.pop());
+                    getElementsByClassName('m-hostcourseitem')[0].parentNode.appendChild(hotcourseRemainingNodes.pop());
                     //first.style.cssText = "margin-top: "+ margintop ;
 
                     hotcourseRemainingNodes.push(first);
                 }
             }()
+            var height = parseInt(window.getComputedStyle(getElementsByClassName('m-hostcourseitem')[0]).height);
+            var n =0;
+            function stepHotCourse() {
+                n++;
+                first.style.marginTop = (-n*height/50)+'px';
+                if (n == 50){
+                    done();
+                }else{
+                    window.setTimeout(stepHotCourse, 10);
+                }
+            }
+            window.setTimeout(stepHotCourse, 10); //50 times
 
-            $(first).animate({
-                marginTop: -1*parseInt(window.getComputedStyle( $('.hotlist .m-hostcourseitem:first')[0]).height)
-            }, 500,done);
+            // $(first).animate({
+            //     marginTop: -1*parseInt(window.getComputedStyle( $('.hotlist .m-hostcourseitem:first')[0]).height)
+            // }, 500,done);
 	},2000);
 
 }
