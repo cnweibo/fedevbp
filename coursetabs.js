@@ -183,7 +183,7 @@
                 paginator += '</ol>\
                         <a href="" class="right'+((that.pagination.pageIndex+1>=that.pagination.totlePageCount)?" disabled":"")+'">&gt;</a>\
                     </div>\ ';
-                var paginatorNode = html2node(paginator);
+                var paginatorNode = u.html2node(paginator);
                 contentcontainer.appendChild(paginatorNode);
                 // attach event for left/right nav
                 var pleft = getElementsByClassName('left',paginatorNode)[0];
@@ -301,7 +301,7 @@
                 paginator += '</ol>\
                         <a href="" class="right'+((that.pagination.pageIndex+1>=that.pagination.totlePageCount)?" disabled":"")+'">&gt;</a>\
                     </div>\ ';
-                var paginatorNode = html2node(paginator);
+                var paginatorNode = u.html2node(paginator);
                 that.contentcontainer.appendChild(paginatorNode);
                 // attach event for left/right nav
                 var pleft = getElementsByClassName('left',paginatorNode)[0];

@@ -10,8 +10,11 @@
         <meta name="description" content="网易教育部-最靠谱的线上教育产品">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="style.css">
+        <!-- helper函数库-->
         <script src="utilities.js"></script>
+        <!-- classList IE兼容库-->        
         <script src="classList.min.js"></script>
+        <!-- IE8 media query兼容库-->
 		<script src="respond.min.js"></script>
 		<script src="jquery.js"></script>
 
@@ -88,16 +91,15 @@
                 </div>
             </div>
 			<div class="l-workplace">
-                <img src="images/workspace-1.jpg" alt="" class="workplace">
-                <img src="images/workspace-2.jpg" alt="" class="workplace">
-                <img src="images/workspace-3.jpg" alt="" class="workplace">
-                <img src="images/workspace-4.jpg" alt="" class="workplace">
-                <img src="images/workspace-5.jpg" alt="" class="workplace">
+                <img src="images/workspace-1.jpg" alt="我们棒呆的工作空间" class="workplace">
+                <img src="images/workspace-2.jpg" alt="我们棒呆的工作空间" class="workplace">
+                <img src="images/workspace-3.jpg" alt="我们棒呆的工作空间" class="workplace">
+                <img src="images/workspace-4.jpg" alt="我们棒呆的工作空间" class="workplace">
+                <img src="images/workspace-5.jpg" alt="我们棒呆的工作空间" class="workplace">
             </div>
 			<div class="l-maincontent">
                 <div class="container coursecontainer j-popped">
                     <div class="coursemask"><h1>加载中。。。</h1></div>
-                    
                     <div class="jigoujieshao">
                         <div class="videointro">
                         	<h2 class  = "head">机构介绍</h2>
@@ -159,110 +161,29 @@
 				</div></div>
 			</div>
 		</div>
-        <!-- mock js to mock backend data-->
-       
+        <!-- 兼容IE的js库-->
+        <script src="compatible.js"></script>
+        <!-- md5 js库-->
         <script src="md5.min.js"></script>
+        <!-- ajax封装库-->
         <script src="ajax.js"></script>
-
-        <script src="domready.js"></script>
+        <!-- hotlist 形变动画-->
+        <script src="animate.js"></script>
+        <!-- cookie封装-->
         <script src="cookie.js"></script>
+        <!-- 关注模块-->
         <script src="followus.js"></script>
-        
-        <script src="index.js"></script>
+        <!-- 事件系统库-->
+        <script src="eventer.js"></script>
+        <!-- 热门课程模块-->
+        <script src="hotlist.js"></script>
+        <!-- 登录模块-->
         <script src="login.js"></script>
+        <!-- 图片轮播模块-->
         <script src="slider.js"></script>
-        
+        <!-- 课程tabs主内容模块-->
         <script src="coursetabs.js"></script>
-
-        <script>
-            // init the login form object
-            var loginform = new loginModal();
-            loginform.on('login',function() {
-                // do login job here
-                ajax.get('http://study.163.com/webDev/login.htm?userName='+loginform.username()+'&password='+md5(loginform.password()),'', function (data) {
-                    if (data == 0){
-                        loginform.resetForm();
-                        loginform.hide();
-                        setCookie('loginSucc','loggedin',1);
-                        followus();
-                    }
-                    else{
-                        loginform.loginError();
-                    }
-                });
-                // console.log(loginform.username() + ' ' +md5(loginform.password()));
-            });
-            // register the followus click handler:
-            addEvent(document.getElementById('follow'),'click',function() {
-                // if loginSucc cookie does not exist, show form
-                if (getCookie('loginSucc')){
-                    // has logged into the system  and call the followus api
-                    followus();                  
-                }else{
-                    loginform.show();
-                }
-            });
-            // register the videothumb click handler
-            addEvent(getElementsByClassName('videothumb')[0],'click',function(e) {
-                getElementsByClassName('m-videointro')[0].classList.remove('j-hidden');
-                e.preventDefault();
-            });
-            // register the close button for video playing screen
-            addEvent(getElementsByClassName('closevedio')[0],'click',function() {
-                getElementsByClassName('m-videointro')[0].classList.add('j-hidden');
-            })
-            addEvent(getElementsByClassName('cancelfollow',document.getElementById('followed'))[0],'click', function() {
-                setCookie('followSuc','',-1);
-                unfollowus();
-            });
-            addEvent(getElementsByClassName('dismiss')[0],'click',function() {
-                setCookie('dismissNotifier','true',100);
-                getElementsByClassName('l-topremovable')[0].classList.add('j-hidden');
-            })
-            // banner slider初始化
-            var slider = new Slider({
-                images: [
-                    'images/banner1.jpg',
-                    'images/banner2.jpg',
-                    'images/banner3.jpg'
-                ]
-            });
-            for (var i = 0; i < slider.imgs.length; i++) {
-                
-                addEvent(slider.navpoints[i],'click',function(i) {
-                    return function(e) {
-                        slider.activeImage.style.opacity = 0;
-                        slider.nav(i);
-                        var animateTimer = setInterval(step, 20);
-                        var alpha = 0;
-                        function step() {
-                            alpha = alpha +  4;
-                            slider.activeImage.style.opacity = alpha/100;
-                            if (alpha >=100){
-                                slider.activeImage.style.opacity =1;
-                                clearTimeout(animateTimer);
-                            }
-                        }
-                    }
-                }(i));
-                addEvent(slider.imgs[i],'mouseenter',function(i) {
-                    return function() {
-                        slider.pause();                        
-                    }
-                }(i));
-                addEvent(slider.imgs[i],'mouseleave',function(i) {
-                    return function() {
-                        slider.carasel();
-                    }
-                }(i));  
-            };
-            slider.carasel();
-            
-            addEvent(slider.activeImage,'click',function(e) {
-                console.dir(e);
-            })
-            var coursetabs = new coursetabs();
-            coursetabs.poptab(0);
-        </script>
+        <!-- web app初始化模块-->
+        <script src="init.js"></script>
     </body>
 </html>

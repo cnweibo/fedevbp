@@ -1,10 +1,10 @@
 
-;(function(_){
+;(function(u){
 
 
   function Slider( opt ){
 
-    extend(this, opt);
+    u.extend(this, opt);
 
     // 容器节点 以及 样式设置
     this.container = this.container || getElementsByClassName('slidercontainer')[0];
@@ -17,9 +17,9 @@
     this.timer5s = null;
   }
 
-  extend( Slider.prototype, eventer );
+  u.extend( Slider.prototype, eventer );
 
-  extend( Slider.prototype, {
+  u.extend( Slider.prototype, {
 
     // 直接跳转到指定页
     nav: function( pageIndex ){
@@ -63,5 +63,5 @@
 
 
 
-})();
+})(util);
 

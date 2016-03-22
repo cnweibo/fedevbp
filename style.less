@@ -421,21 +421,21 @@ body{
     position: relative;
     overflow: hidden;
     .coursemask{
-      display: table-cell;
       position: absolute;
       top: 0;
       bottom: 0;
       left: 0;
       right: 20%;
-      text-align: center;
-      vertical-align: middle;
-      background-color: rgba(0,0,0,0.7);
-      z-index: 1999;
+      background-color: rgba(0, 0, 0, 0.7);
       h1{
-        display: inline-block;
-        color: white;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%);
+        font-size: 64px;
         font-weight: bold;
-        font-size: 48px;
+        color: white;
+
       }
     }
     &.j-popped{
@@ -624,6 +624,24 @@ body{
         }
       }
     }
+  }
+}
+@-webkit-keyframes rotateplane {
+  0% { -webkit-transform: perspective(120px) }
+  50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+  100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
+ 
+@keyframes rotateplane {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+  } 50% {
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+  } 100% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
   }
 }
 .jigoujieshao{	
