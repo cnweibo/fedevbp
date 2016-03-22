@@ -222,6 +222,7 @@
         },
         navtopage: function(pageidx) {
             var that = this;
+            that.parent.classList.remove('j-popped');
             ajax.get(this.tabs[this._activetab].url+'?pageNo='+pageidx+'&psize='+this.pagination.pageSize+'&type='+this.tabs[this._activetab].type,'',function(data){
                 that.pagination = data.pagination;
                 // empty the contentcontainer
@@ -327,6 +328,8 @@
                         }
                     })(i))
                 };
+                // everything is ready, remove the mask via remove .j-popped class on the contentcontainer
+                that.parent.classList.add('j-popped');
             });
         }
     });

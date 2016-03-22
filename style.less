@@ -417,6 +417,33 @@ body{
 .l-maincontent{
   padding-top: 80px;
   background-color: #f8f8f8;
+  .coursecontainer{
+    position: relative;
+    overflow: hidden;
+    .coursemask{
+      display: table-cell;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 20%;
+      text-align: center;
+      vertical-align: middle;
+      background-color: rgba(0,0,0,0.7);
+      z-index: 1999;
+      h1{
+        display: inline-block;
+        color: white;
+        font-weight: bold;
+        font-size: 48px;
+      }
+    }
+    &.j-popped{
+      .coursemask{
+        display: none;
+      }
+    }
+  }
   .maincontent{
     float: left;
     width: 100%; /*默认为小屏幕，当大屏时做media query*/
