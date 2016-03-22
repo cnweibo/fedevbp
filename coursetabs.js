@@ -115,11 +115,11 @@
                                 <div class="detail j-hidden">\
                                     <div class="row">\
                                         <div class="col1-2">\
-                                            <img src="'+data.list[i].middlePhotoUrl+'" alt="手绘画系列教程" class="imagedesc"/>\
+                                            <img src="'+data.list[i].middlePhotoUrl+'" alt="'+data.list[i].description+'" class="imagedesc"/>\
                                         </div>\
                                         <div class="col1-2">\
                                             <div class="textdesc">\
-                                                <h2>手绘画系列教程</h2>\
+                                                <h2>'+data.list[i].name+'</h2>\
                                                 <p class="studynum"><img src="images/person.png" alt=""/><span>'+data.list[i].learnerCount+'人在学</span></p>\
                                                 <p>发布者：'+data.list[i].provider+'</p>\
                                                 <p>分类： 手绘设计</p>\
@@ -246,11 +246,11 @@
                                 <div class="detail j-hidden">\
                                     <div class="row">\
                                         <div class="col1-2">\
-                                            <img src="'+data.list[i].middlePhotoUrl+'" alt="手绘画系列教程" class="imagedesc"/>\
+                                            <img src="'+data.list[i].middlePhotoUrl+'" alt="'+data.list[i].description+'" class="imagedesc"/>\
                                         </div>\
                                         <div class="col1-2">\
                                             <div class="textdesc">\
-                                                <h2>手绘画系列教程</h2>\
+                                                <h2>'+data.list[i].name+'</h2>\
                                                 <p class="studynum"><img src="images/person.png" alt=""/><span>'+data.list[i].learnerCount+'人在学</span></p>\
                                                 <p>发布者：'+data.list[i].provider+'</p>\
                                                 <p>分类： 手绘设计</p>\
