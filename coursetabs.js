@@ -82,7 +82,7 @@
             ajax.get(this.tabs[tabidx].url+this.tabs[tabidx].querystr,'',function(data) {
                 that.pagination = data.pagination;
                 var _tabs = '<div class="tab">\ ';
-                for (var i = 0; i < that.tabs.length; i++) {//默认第0个tab为active
+                for (var i = 0; i < that.tabs.length; i++) {//默认第0个tab为active //IE8奇怪的是length为3包含一个proto
                     _tabs += '<div class="tabitem '+(i==that._activetab?"active":"")+'">'+that.tabs[i].title+'</div>\ '
                 };
                 _tabs+='</div>\ ';
