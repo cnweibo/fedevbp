@@ -1,7 +1,7 @@
 /* import css framework */
 /* global variables */
 @gap: 20px; /*gap between grid columns*/
-@mediabreakpoint:  1200px; //  1205px;
+@mediabreakpoint:  1205px;
 @import (reference) "bower_components/bootstrap/less/bootstrap.less";
 /* mixins */
 @font-face {
@@ -419,7 +419,7 @@ body{
   background-color: #f8f8f8;
   .coursecontainer{
     position: relative;
-    overflow: hidden;
+    // overflow: hidden; //commented because outline of course does not show left side!
     .coursemask{
       position: absolute;
       top: 0;
@@ -616,9 +616,15 @@ body{
             font-size: 14px;
             color: #666666;
             padding: 0 10px;
+            .pitem{
+              color: #666666;
+            }
             &.active{
-              color: #ffffff;
               background-color: #9dd8b1;
+              .pitem{
+              color: #ffffff;
+              }
+            
             }
           }
         }
