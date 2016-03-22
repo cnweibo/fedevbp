@@ -104,5 +104,5 @@
     addEvent(slider.activeImage,'click',function(e) {
         console.dir(e);
     })
-    var coursetabs = new coursetabs();
-    coursetabs.poptab(0);
+    var coursetab = new coursetabs();
+    coursetab.poptab(0);
