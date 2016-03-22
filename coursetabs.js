@@ -72,7 +72,8 @@
         this.pdisplaylimit = 8;
         this.pagination = {};
         this.datatype =10;
-
+        this._activetab = 0;
+        this.tabcontainer = {};
     }
     u.extend(coursetabs.prototype,{
         poptab: function(tabidx) { // populate all the data in this tab 
@@ -81,7 +82,7 @@
                 u.extend(that.pagination , data.pagination);
                 var _tabs = '<div class="tab">\ ';
                 for (var i = 0; i < that.tabs.length; i++) {//默认第0个tab为active
-                    _tabs += '<div class="'+(i==0?"active":"")+'">'+that.tabs[i].title+'</div>\ '
+                    _tabs += '<div class="tabitem '+(i==that._activetab?"active":"")+'">'+that.tabs[i].title+'</div>\ '
                 };
                 _tabs+='</div>\ ';
                 var tabcontainer ='<div class="maincontent m-tabs">\
@@ -90,7 +91,8 @@
                         </div>  <!-- $content -->\
                     </div>\
                 ' ;
-                that.parent.insertAdjacentElement('afterbegin',u.html2node(tabcontainer));
+                that.tabcontainer = u.html2node(tabcontainer);
+                that.parent.insertAdjacentElement('afterbegin',that.tabcontainer);
                 var contentcontainer = getElementsByClassName('content',that.parent)[0];
                 for (var i = 0; i < data.list.length; i++) {
                     if (i%4==0){
@@ -154,14 +156,27 @@
                                 // detail.className +=' j-coursehovered';
                             }
                         });
-                    }());
+                    }());   
                 }
+                // attach event for tab navigation
+                (function() {
+                    var tabs = getElementsByClassName('tabitem', that.parent);
+                    for (var i = 0; i < tabs.length; i++) {
+                        addEvent(tabs[i],'click',function(i) {
+                           return function() {
+                               that._activetab = i;
+                               that.navtotab(i);
+                           } 
+                        }(i))
+                    };
+                    
+                })();
                 // 插入paginator
                 var paginator = '<div class="m-paginator">\
-                        <a href="'+that.tabs[tabidx].url+that.tabs[tabidx].querystr+'" class="left">&lt;</a>\
+                        <a href="'+that.tabs[tabidx].url+''+that.tabs[tabidx].querystr+'" class="left">&lt;</a>\
                         <ol class="paginator">\ ';
                 for (var i = 0; i < that.pdisplaylimit; i++) {
-                    paginator +='<li><a href="that.tabs[tabidx].url'+"?pageNo="+i+"&psize="+that.pagination.pageSize+"&type="+that.datatype+'">'+i+'</a></li>\ ';        
+                    paginator +='<li><a href="'+that.tabs[tabidx].url+'?pageNo='+(i+1)+'&psize='+that.pagination.pageSize+"&type="+that.datatype+'">'+(i+1)+'</a></li>\ ';        
                 };
                 paginator += '</ol>\
                         <a href="" class="right">&gt;</a>\
@@ -170,7 +185,11 @@
             });
         },
         navtotab: function(tabidx) {
-            
+            this.tabcontainer.innerHTML = '';
+            console.dir(this.tabcontainer);
+            this.tabcontainer.parentNode.removeChild(this.tabcontainer);
+            this._activetab = tabidx;
+            this.poptab(tabidx);
         }
     })
     window.coursetabs = coursetabs;
