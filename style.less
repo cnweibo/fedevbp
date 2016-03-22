@@ -426,11 +426,12 @@ body{
     .tab{
       display: table-row;
       font-size: 20px;
-      div{
+      .tabitem{
         display: table-cell;
         text-align: center;
         width: 200px;
         line-height: 50px;
+        cursor: pointer;
         &.active{
           color: #ffffff;
           background-color: #39a030;
@@ -445,6 +446,10 @@ body{
     .content{
       margin-top: 30px;
       .course{
+        img{
+          width: 100%;
+          max-height: 108px;
+        }
         position: relative;
         background-color: #f8f8f8;
         font-size: 12px;
@@ -462,9 +467,6 @@ body{
           @media (min-width: @mediabreakpoint) {
           	border: 1px solid #F1F1F1;
           }
-          img{
-            width: 100%;
-          }
           &:hover{
           	border: 1px solid #E6E6E6;
           	outline: 1px dashed #ED636E;
@@ -475,10 +477,6 @@ body{
           }
         }
         .detail{
-			    
-          .imagedesc{
-            width: 100%;
-          }
           .textdesc{
             margin-left: 8px;
             font-size: 12px;
@@ -493,6 +491,7 @@ body{
                margin: 0 auto 10px 0;
              }
             img{
+              width: initial;
               margin-right: 6px;
             }
             p{
