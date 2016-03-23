@@ -102,5 +102,3 @@
     
     var coursetab = new coursetabs();
     coursetab.poptab(0);
-
-    console.log("the document mode is: "+document.documentMode);
