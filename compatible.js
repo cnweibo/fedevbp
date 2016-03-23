@@ -127,7 +127,28 @@
         return fBound; 
         }; 
     } 
-
+// firefox insertAdjacentElement 兼容
+if (!HTMLElement.prototype.insertAdjacentElement){
+    HTMLElement.prototype.insertAdjacentElement=function(where,parsedNode){
+        switch(where){ 
+            case "beforebegin": 
+                this.parentNode.insertBefore(parsedNode,this); 
+                break; 
+            case "afterbegin": 
+                this.insertBefore(parsedNode,this.firstChild); 
+                break; 
+            case "beforeend": 
+                this.appendChild(parsedNode); 
+                break; 
+            case "afterend": 
+                if(this.nextSibling) 
+                    this.parentNode.insertBefore(parsedNode,this.nextSibling); 
+                else 
+                    this.parentNode.appendChild(parsedNode); 
+                break; 
+        } 
+    }
+}
 // getComputedStyle for IE8彻底兼容处理
 (function (global) {
     if (window.getComputedStyle){return;}
