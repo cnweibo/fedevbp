@@ -12,10 +12,6 @@
             el.attachEvent("on"+event, handler);
         }
     }
-    // getComputedStyle兼容处理 
-    if( !window.getComputedStyle) {
-        window.getComputedStyle = function(e) {return e.currentStyle};
-    }
     // getElementsByClassName兼容处理函数
     function getElementsByClassName(className,root) {    
         // helper函数，判断a数组是否是b数组的子集
@@ -132,7 +128,7 @@
         }; 
     } 
 
-// getComputedStyle for IE8
+// getComputedStyle for IE8彻底兼容处理
 (function (global) {
     if (window.getComputedStyle){return;}
     function getComputedStylePixel(element, property, fontSize) {
