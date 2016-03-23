@@ -65,7 +65,7 @@
                 querystr: '?pageNo=1&psize=20&type=20',
                 title: '编程语言',
                 type: 20
-            },
+            }
 
         ];
         this.parent = getElementsByClassName('coursecontainer')[0];
