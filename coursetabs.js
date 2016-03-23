@@ -106,7 +106,7 @@
                         var rownode = getElementsByClassName('row'+(i/4))[0];
                     }
                     var _tpl = '<div class="course col1-4">\
-                                <div class="preview"><img src="'+data.list[i].middlePhotoUrl+'" alt="混音全揭秘，舞曲实战篇，揭秘音乐，揭秘实战"/>\
+                                <div class="preview"><img class="imgpreview" src="'+data.list[i].middlePhotoUrl+'" alt="混音全揭秘，舞曲实战篇，揭秘音乐，揭秘实战"/>\
                                     <h4 class="title">'+data.list[i].name+'</h4>\
                                     <h5 class="category">'+data.list[i].provider+'</h5>\
                                     <p class="studentsnum">'+data.list[i].learnerCount+'</p>\
@@ -236,7 +236,7 @@
                         var rownode = getElementsByClassName('row'+(i/4))[0];
                     }
                     var _tpl = '<div class="course col1-4">\
-                                <div class="preview"><img src="'+data.list[i].middlePhotoUrl+'" alt="混音全揭秘，舞曲实战篇，揭秘音乐，揭秘实战"/>\
+                                <div class="preview"><img class="imgpreview" src="'+data.list[i].middlePhotoUrl+'" alt="混音全揭秘，舞曲实战篇，揭秘音乐，揭秘实战"/>\
                                     <h4 class="title">'+data.list[i].name+'</h4>\
                                     <h5 class="category">'+data.list[i].provider+'</h5>\
                                     <p class="studentsnum">'+data.list[i].learnerCount+'</p>\
