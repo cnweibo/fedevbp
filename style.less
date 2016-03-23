@@ -372,6 +372,7 @@ body{
     width: 33.3%;
     padding-right: 88px;
     color: #333333;
+    text-align: center;
     .badged{
       position: relative;
       float: left;
@@ -380,16 +381,26 @@ body{
       height: 80px;
       border-radius: 100%;
       background-color: #39a030;
+      .alignment{
+        display: inline-block;
+        width: 1px;
+        height: 100%;
+        line-height: 100%;
+        vertical-align: middle;
+      }
       img{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
+        display: inline-block;
+        vertical-align: middle;
+        // position: absolute;
+        // top: 50%;
+        // left: 50%;
+        // transform: translate(-50%,-50%);
       }
 
     }
     .ptext{
       overflow: hidden;
+      text-align: left;
       .more{
         color: #39a030;
         font-size: 14px;
