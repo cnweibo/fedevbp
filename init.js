@@ -48,7 +48,7 @@
     // register the videothumb click handler
     addEvent(getElementsByClassName('videothumb')[0],'click',function(e) {
         getElementsByClassName('m-videointro')[0].classList.remove('j-hidden');
-        e.preventDefault();
+        e.preventDefault ? e.preventDefault() : (e.returnValue = false);
     });
     // register the close button for video playing screen
     addEvent(getElementsByClassName('closevedio')[0],'click',function() {
@@ -102,7 +102,7 @@
     slider.carasel();
     
     addEvent(slider.activeImage,'click',function(e) {
-        console.dir(e);
+        console.log(e);
     })
     var coursetab = new coursetabs();
     coursetab.poptab(0);

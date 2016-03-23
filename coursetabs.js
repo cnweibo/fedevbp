@@ -188,14 +188,14 @@
                 // attach event for left/right nav
                 var pleft = getElementsByClassName('left',paginatorNode)[0];
                 addEvent(pleft,'click',function(e) {
-                    e.preventDefault();
+                    e.preventDefault ? e.preventDefault() : (e.returnValue = false);
                     if (that.pagination.pageIndex-1 >0) {
                         that.navtopage(that.pagination.pageIndex-1);
                     }
                 });
                 var pright = getElementsByClassName('right',paginatorNode)[0];
                 addEvent(pright,'click',function(e) {
-                    e.preventDefault();
+                    e.preventDefault ? e.preventDefault() : (e.returnValue = false);
                     if (that.pagination.pageIndex+1 <that.pagination.totlePageCount) {
                         that.navtopage(that.pagination.pageIndex+1);
                     }
@@ -205,7 +205,7 @@
                     // attach event for page navigation
                     addEvent(pages[i],'click',(function(i) {
                         return function(e) {
-                            e.preventDefault();
+                            e.preventDefault ? e.preventDefault() : (e.returnValue = false);
                             that.navtopage(i+1);
                         }
                     })(i))
@@ -306,14 +306,14 @@
                 // attach event for left/right nav
                 var pleft = getElementsByClassName('left',paginatorNode)[0];
                 addEvent(pleft,'click',function(e) {
-                    e.preventDefault();
+                    e.preventDefault ? e.preventDefault() : (e.returnValue = false);
                     if (that.pagination.pageIndex-1 >0) {
                         that.navtopage(that.pagination.pageIndex-1);
                     }
                 });
                 var pright = getElementsByClassName('right',paginatorNode)[0];
                 addEvent(pright,'click',function(e) {
-                    e.preventDefault();
+                    e.preventDefault ? e.preventDefault() : (e.returnValue = false);
                     if (that.pagination.pageIndex+1 <that.pagination.totlePageCount) {
                         that.navtopage(that.pagination.pageIndex+1);
                     }
@@ -323,7 +323,7 @@
                     // attach event for page navigation
                     addEvent(pages[i],'click',(function(i) {
                         return function(e) {
-                            e.preventDefault();
+                            e.preventDefault ? e.preventDefault() : (e.returnValue = false);
                             that.navtopage(i+1);
                         }
                     })(i))

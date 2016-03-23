@@ -77,7 +77,7 @@
 
     },
     _onLogin: function(e){
-      e.preventDefault();
+      e.preventDefault ? e.preventDefault() : (e.returnValue = false);
       var err = getElementsByClassName('validinfo',this.container)[0];
       // 表单验证: username/password min:max 6~20 chars 
       if (this.username().length<6 || this.username().length>20){
