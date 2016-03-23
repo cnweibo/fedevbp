@@ -27,7 +27,6 @@ var ajax = (function() {
 	           alert('HTTP error ' + req.status);
 	           return;
 	       }
-	       // console.log(req.responseText);
 	       success(JSON.parse(req.responseText));
 	   }
 	   req.open('GET', url, true);

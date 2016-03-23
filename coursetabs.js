@@ -215,7 +215,6 @@
         },
         navtotab: function(tabidx) {
             this.tabcontainer.innerHTML = '';
-            console.dir(this.tabcontainer);
             this.tabcontainer.parentNode.removeChild(this.tabcontainer);
             this._activetab = tabidx;
             this.poptab(tabidx);

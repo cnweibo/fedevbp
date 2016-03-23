@@ -33,7 +33,6 @@
                 loginform.loginError();
             }
         });
-        // console.log(loginform.username() + ' ' +md5(loginform.password()));
     });
     // register the followus click handler:
     addEvent(document.getElementById('follow'),'click',function() {
@@ -101,8 +100,7 @@
     };
     slider.carasel();
     
-    addEvent(slider.activeImage,'click',function(e) {
-        console.log(e);
-    })
     var coursetab = new coursetabs();
     coursetab.poptab(0);
+
+    console.log("the document mode is: "+document.documentMode);
