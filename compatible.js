@@ -127,9 +127,9 @@
         return fBound; 
         }; 
     } 
-// firefox insertAdjacentElement 兼容
-if (!HTMLElement.prototype.insertAdjacentElement){
-    HTMLElement.prototype.insertAdjacentElement=function(where,parsedNode){
+// firefox insertAdjacentElement 兼容: ie8没有HTMLEelement
+if (!Element.prototype.insertAdjacentElement){
+    Element.prototype.insertAdjacentElement=function(where,parsedNode){
         switch(where){ 
             case "beforebegin": 
                 this.parentNode.insertBefore(parsedNode,this); 
