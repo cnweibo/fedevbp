@@ -91,7 +91,11 @@
         getElementsByClassName('password',this.container)[0].classList.add('error');
         return;
       }else {
-        err.removeChild(err.children[0]);
+        try{
+          err.removeChild(err.children[0]);          
+        }catch(err){
+          
+        }
         this.emit('login'); //only emit the login event outwards if form check ok
       }
     },
