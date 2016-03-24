@@ -756,7 +756,17 @@ body{
 	          color: @headtext-color;
 	        }
 	        .studentnum{
+            margin-top: 1em;
+            font-size: 12px;
 	          color: @coursecat-color;
+            &:before{
+              display: inline-block;
+              *display:inline;
+              *zoom:1;
+              content: url('images/person.png');
+              padding-right: 5px;
+              padding-left: 3px;
+            }
 	        }
 	      }
 	    }
