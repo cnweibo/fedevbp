@@ -113,6 +113,7 @@
                                     <p class="price">'+data.list[i].price+'</p>\
                                 </div>\
                                 <div class="detail j-hidden">\
+                                    <div class="detail-fixed">\
                                     <div class="row">\
                                         <div class="col1-2">\
                                             <img src="'+data.list[i].middlePhotoUrl+'" alt="'+data.list[i].description+'" class="imagedesc"/>\
@@ -130,6 +131,7 @@
                                         <div class="btcontainer">\
                                             <p class="detailtext">'+data.list[i].description+'</p>\
                                         </div>\
+                                    </div>\
                                     </div>\
                                 </div>\
                             </div> <!-- course -->\
