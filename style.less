@@ -11,17 +11,17 @@
 /* import css framework */
 @import (reference) "bower_components/bootstrap/less/bootstrap.less";
 /* mixins */
-@font-face {
-  font-family: 'applew3<p></p>';
-  src: url('fonts/applew3.eot');
-    src:
-      url('fonts/applew3.eot?#font-spider') format('embedded-opentype'),
-      url('fonts/applew3.woff') format('woff'),
-      url('fonts/applew3.ttf') format('truetype'),
-      url('fonts/applew3.svg') format('svg');
-  font-weight: normal;
-  font-style: normal;
-} 
+// @font-face {
+//   font-family: 'applew3<p></p>';
+//   src: url('fonts/applew3.eot');
+//     src:
+//       url('fonts/applew3.eot?#font-spider') format('embedded-opentype'),
+//       url('fonts/applew3.woff') format('woff'),
+//       url('fonts/applew3.ttf') format('truetype'),
+//       url('fonts/applew3.svg') format('svg');
+//   font-weight: normal;
+//   font-style: normal;
+// } 
 .width(@num){
 	width: @num*1%;
 }
@@ -52,7 +52,13 @@ a{
 /* typograph */
 body{
   font-family: '微软雅黑',sans-serif;
+  font-weight: normal;
+  font-style: normal;
 }
+input,textarea,select,button{
+  font-family: '微软雅黑',sans-serif;
+}
+
 /* layout helper classes */
 .row{
   margin-left: -@gap;
@@ -118,7 +124,6 @@ body{
   right: 0;
   background-color: rgba(0,0,0,0.7);
   text-align: center;
-  font-family: "微软雅黑",sans-serif;
   .modalalign{
     display: inline-block;
     vertical-align: middle;
@@ -157,7 +162,6 @@ body{
         }
       }
       input{
-        font-family: "微软雅黑",sans-serif;
         ::-webkit-input-placeholder { /* WebKit browsers */
             color:    #999;
         }
@@ -262,6 +266,7 @@ body{
       line-height: 21px;
       padding-left: 21px;
       padding-right: 18px;
+      border-radius: 3px;
       &:before{
         content: '+';
         font-weight: bold;
@@ -306,12 +311,12 @@ body{
       font-weight: normal;
       font-style: normal;
     }
-    font-family: "applew3",sans-serif;
     li{
       display: inline-block;
       *display:inline;
       *zoom:1;
       a{
+        font-family: "applew3",sans-serif;
         font-weight: normal;
         font-size: 16px;
         color: #666666;
@@ -479,6 +484,7 @@ body{
           color: #666666;
           background-color: @component-background;
           border-bottom: ;
+          box-shadow: 1px 1px 0 #d4d3d3;
         }
       }
     }
@@ -634,7 +640,7 @@ body{
             *zoom:1;
             font-size: 14px;
             color: #666666;
-            padding: 0 10px;
+            padding: 0 6px;
             .pitem{
               color: #666666;
             }
