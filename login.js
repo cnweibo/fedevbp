@@ -82,15 +82,16 @@
       // 表单验证: username/password min:max 6~20 chars 
       if (this.username().length<6 || this.username().length>20){
         err.classList.add('error');
-        err.innerHTML = "<p>用户名字段长度必须在6和20个字符之间！</p>";
+        err.appendChild(u.html2node('<p class="loginerr">用户名字段长度必须在6和20个字符之间！</p>'));;
         getElementsByClassName('username',this.container)[0].classList.add('error');
         return;
       }else if (this.password().length<6 || this.password().length>20){
         err.classList.add('error');
-        err.innerHTML = "<p>密码字段长度必须在6和20个字符之间！</p>";
+        err.appendChild(u.html2node('<p class="loginerr">密码字段长度必须在6和20个字符之间！</p>'));
         getElementsByClassName('password',this.container)[0].classList.add('error');
         return;
       }else {
+        err.removeChild(err.children[0]);
         this.emit('login'); //only emit the login event outwards if form check ok
       }
     },
