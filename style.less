@@ -1,7 +1,13 @@
 /* import css framework */
 /* global variables */
 @gap: 20px; /*gap between grid columns*/
+@primary-background: #121212; /*#f8f8f8*/
 @mediabreakpoint:  1205px;
+@coursecat-color: #999999;
+@headtext-color: #333333;
+@component-background: #ffffff;
+@btnlike-color: #ffffff;
+@texth2-color: #444444
 @import (reference) "bower_components/bootstrap/less/bootstrap.less";
 /* mixins */
 @font-face {
@@ -90,7 +96,7 @@ body{
 		width: 200%;
 		//          height: 100%;
 		// margin-left: -@gap/2;
-		background-color: white;
+		background-color: @component-background;
     margin-left: -@gap/2;
     padding-left: @gap/2;
     margin-top: -@gap/2;
@@ -139,7 +145,7 @@ body{
     width: 270px;
     padding-left: 40px;
     padding-right: 50px;
-    background-color: #ffffff;
+    background-color: @component-background;
     .close{
       position: absolute;
       right: 10px;
@@ -150,7 +156,7 @@ body{
       margin-top: 30px;
       text-align: left;
       font-size: 18px;
-      color: #444444;
+      color: @texth2-color;
     }
     .username,.password{
       background-color: #fafafa;
@@ -189,7 +195,7 @@ body{
       line-height: 45px;
       font-size: 16px;
       background-color: #19a138;
-      color: #ffffff;
+      color: @btnlike-color;
       cursor: pointer;
     }
     .validinfo{
@@ -211,7 +217,7 @@ body{
     .title{
       float: left;
       font-weight: normal;
-      color: #333333;
+      color: @headtext-color;
     }
     a{
       text-decoration: none;
@@ -247,10 +253,10 @@ body{
         *display:inline;
         *zoom:1;
 
-        background-color: #f8f8f8;
-        color: #333333;
+        background-color: @primary-background;
+        color: @headtext-color;
         span{
-          color: #999999;
+          color: @coursecat-color;
           &:hover{
             color: #21a557;
             text-decoration: underline;
@@ -263,7 +269,7 @@ body{
       *display:inline;
       *zoom:1;
       background-color: #21a557;
-      color: #ffffff;
+      color: @btnlike-color;
       line-height: 21px;
       padding-left: 21px;
       padding-right: 18px;
@@ -352,7 +358,7 @@ body{
       height: 10px;
       bottom: 10px;
       border-radius: 10px;
-      background-color: #ffffff;
+      background-color: @component-background;
       cursor: pointer;
       &.active{
         background-color: #000000;
@@ -371,7 +377,7 @@ body{
     float: left;
     width: 33.3%;
     padding-right: 88px;
-    color: #333333;
+    color: @headtext-color;
     text-align: center;
     .badged{
       position: relative;
@@ -434,7 +440,7 @@ body{
 }
 .l-maincontent{
   padding-top: 80px;
-  background-color: #f8f8f8;
+  background-color: @primary-background;
   .coursecontainer{
     position: relative;
     // overflow: hidden; //commented because outline of course does not show left side!
@@ -452,7 +458,7 @@ body{
         transform: translateX(-50%);
         font-size: 64px;
         font-weight: bold;
-        color: white;
+        color: @btnlike-color;
 
       }
     }
@@ -477,13 +483,14 @@ body{
         width: 200px;
         line-height: 50px;
         cursor: pointer;
+        background-color: @component-background;
         &.active{
-          color: #ffffff;
+          color: @btnlike-color;
           background-color: #39a030;
         }
         &.inactive{
           color: #666666;
-          background-color: #ffffff;
+          background-color: @component-background;
           border-bottom: ;
         }
       }
@@ -495,7 +502,7 @@ body{
           max-height: 108px;
         }
         position: relative;
-        background-color: #f8f8f8;
+        background-color: @primary-background;
         font-size: 12px;
 		&:hover{
 			.detail{
@@ -504,7 +511,7 @@ body{
 		}
         .preview{
           cursor: pointer;
-          background-color: #ffffff;
+          background-color: @component-background;
           .imgpreview{
             // width: 100%;
           }
@@ -535,7 +542,7 @@ body{
               font-weight: normal;
               margin: 4px auto 16px 0;
               font-size: 18px;
-              color: #333333;
+              color: @headtext-color;
             }
             .studynum{
                margin: 0 auto 10px 0;
@@ -560,7 +567,7 @@ body{
             font-size: 14px;
             line-height: 24px;
             color: #666666;
-          	background-color: #F8F8F8;
+          	background-color: @primary-background;
           }
         }
 
@@ -569,10 +576,10 @@ body{
           white-space: nowrap;
           overflow: hidden;
           font-weight: normal;
-          color: #333333;
+          color: @headtext-color;
         }
         .category{
-          color: #999999;
+          color: @coursecat-color;
           margin: 10px auto;
         }
         .studentsnum{
@@ -623,7 +630,7 @@ body{
           line-height: 20px;
           text-align: center;
           background-color: #9dd8b1;
-          color: #ffffff;
+          color: @btnlike-color;
           &.disabled{
             background-color: #C7D8CD;
           }
@@ -645,7 +652,7 @@ body{
             &.active{
               background-color: #9dd8b1;
               .pitem{
-              color: #ffffff;
+              color: @btnlike-color;
               }
             
             }
@@ -682,12 +689,12 @@ body{
 	  border-right: 1px solid #ecebeb;
 	  width: 20%;
 	  .videointro{
-	    background-color: #ffffff;
+	    background-color: @component-background;
 	    .head{
 	      padding: 20px;
 	      font-size: 16px;
 	      font-weight: normal;
-	      color: #333333;
+	      color: @headtext-color;
 	    }
 	    .video{
 	      padding: 20px;
@@ -709,7 +716,7 @@ body{
 	  .hotlist{
 	    margin-top: 20px;
 	    padding-bottom: 20px;
-	    background-color: #ffffff;
+	    background-color: @component-background;
         .hotcourses{
           overflow: hidden;
         }
@@ -717,8 +724,8 @@ body{
 	      padding: 20px;
 	      font-size: 16px;
 	      font-weight: normal;
-	      color: #333333;
-        background-color: white;
+	      color: @headtext-color;
+        background-color: @component-background;
         position: relative;        
 	    }
 	    hr{
@@ -745,10 +752,10 @@ body{
             overflow: hidden;
 	          font-size: 14px;
 	          font-weight: normal;
-	          color: #333333;
+	          color: @headtext-color;
 	        }
 	        .studentnum{
-	          color: #999999;
+	          color: @coursecat-color;
 	        }
 	      }
 	    }
@@ -778,19 +785,19 @@ body{
         width: 950px;
         padding: 30px;
         line-height: 100%;
-        background-color: #ffffff;
+        background-color: @component-background;
         overflow: hidden;
         h2{
           margin-bottom: 20px;
           font-size: 18px;
-          color: #444444;
+          color: @texth2-color;
           font-weight: normal;
         }
         .closevedio{
           position: absolute;
           right: 13px;
           top: 13px;
-          background-color: #ffffff;
+          background-color: @component-background;
           border: none;
           cursor: pointer;
         }
@@ -822,7 +829,7 @@ body{
       width: 48%;
       font-size: 12.5px;
       font-weight: normal;
-      color: #ffffff;
+      color: @btnlike-color;
       .logo{
         margin-bottom: 36px;
         a{
@@ -843,21 +850,21 @@ body{
       .title {
         font-size: 12.5px;
         font-weight: normal;
-        color: #ffffff;
+        color: @btnlike-color;
       }
       a{
         font-size: 14.5px;
-        color: #ffffff;
+        color: @btnlike-color;
       }
     }
     .aboutus{
       .title{
         font-size: 12.5px;
-        color: #ffffff;
+        color: @btnlike-color;
       }
       a{
         font-size: 14.5px;
-        color: #ffffff;
+        color: @btnlike-color;
       }
       float: left;
       width: 11%;
@@ -865,11 +872,11 @@ body{
     .more{
       .title{
         font-size: 12.5px;
-        color: #ffffff;
+        color: @btnlike-color;
       }
       a{
         font-size: 14.5px;
-        color: #ffffff;
+        color: @btnlike-color;
       }
       float: left;
       width: 24%;
