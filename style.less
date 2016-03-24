@@ -2,7 +2,7 @@
 /* global variables */
 @gap: 20px; 
 /* #f8f8f8 */
-@primary-background: #121212; 
+@primary-background: #f8f8f8; 
 @mediabreakpoint:  1205px;
 @coursecat-color: #999999;
 @headtext-color: #333333;
@@ -98,19 +98,17 @@ body{
 		//          height: 100%;
 		// margin-left: -@gap/2;
 		background-color: @component-background;
-    margin-left: -@gap/2;
-    padding-left: @gap/2;
-    margin-top: -@gap/2;
-    padding-top: @gap/2;
-    margin-right: @gap;
-    padding-right: @gap/4 ;
-    margin-bottom: @gap/2;
+    margin-left: -@gap;
+    padding-left: @gap;
+    // margin-top: -@gap/2;
+    // padding-top: @gap/2;
+    // margin-right: @gap;
+    // padding-right: @gap/4 ;
+    // margin-bottom: @gap/2;
     background-clip: content-box;
-
-		// padding-left: @gap/2;
-		// margin-top: -@gap/2;
-		// margin-bottom: -@gap;
-		// padding-top: @gap/2;
+    .imagedesc{
+      width: 100%;
+    }
 	}
   
 }
@@ -507,12 +505,16 @@ body{
         font-size: 12px;
 		&:hover{
 			.detail{
-				outline: 1px solid #D7D7D7;
+				// outline: 1px solid #D7D7D7;
 			}
 		}
         .preview{
           cursor: pointer;
           background-color: @component-background;
+          padding-bottom: 10px;
+          .price{
+            margin-top: 10px;
+          }
           .imgpreview{
             width: 100%;
           }
@@ -535,6 +537,19 @@ body{
           }
         }
         .detail{
+          .detail-fixed{
+            position: absolute;   
+            z-index: 3999;         
+            top: 0;
+            left: @gap;
+            right: 0;
+            bottom: 0;
+            margin-left: -@gap/2;
+            padding-left: @gap/2;
+            margin-top: -@gap/2;
+            padding-top: @gap/2;
+            outline: 2px solid #CCCACB;
+          }
           .textdesc{
             margin-left: 8px;
             font-size: 12px;
@@ -601,7 +616,7 @@ body{
         }
         .price{
           font-size: 8px;
-          margin: 10px auto;
+          // margin: 10px auto;
           color: #ff3f00;
           &:before{
             content: '\00A5';
