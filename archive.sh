@@ -4,5 +4,5 @@ git checkout gh-pages
 cp -R -f ../archive/* .
 git add .
 git commit -m"arhive gh-page"
-git push
+git push --force
 rm -rf ../archive
