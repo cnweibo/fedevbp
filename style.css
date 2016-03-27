@@ -535,7 +535,7 @@ button {
   display: inline-block;
   *display: inline;
   *zoom: 1;
-  background-color: #123456;
+  background-color: #f8f8f8;
   color: #333333;
 }
 .l-topnav .followus.j-followed #followed span {
@@ -637,7 +637,7 @@ button {
 }
 .l-maincontent {
   padding-top: 80px;
-  background-color: #123456;
+  background-color: #f8f8f8;
 }
 .l-maincontent .coursecontainer {
   position: relative;
@@ -702,7 +702,7 @@ button {
 }
 .l-maincontent .maincontent .content .course {
   position: relative;
-  background-color: #123456;
+  background-color: #f8f8f8;
   font-size: 12px;
 }
 .l-maincontent .maincontent .content .course img {
@@ -791,7 +791,7 @@ button {
   font-size: 14px;
   line-height: 24px;
   color: #666666;
-  background-color: #123456;
+  background-color: #f8f8f8;
 }
 .l-maincontent .maincontent .content .course .title {
   text-overflow: ellipsis;
