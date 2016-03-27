@@ -10,6 +10,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var plumber = require('gulp-plumber');
 var debug = require('gulp-debug');
 var uncss = require('gulp-uncss');
+var autoprefixer = require('gulp-autoprefixer');
 
 var browserSync = require('browser-sync');
 
@@ -53,6 +54,9 @@ gulp.task('less',function(){
        //      // }
        // }
        ))
+       .pipe(autoprefixer({
+            browsers: ['last 10 versions']
+        }))
        .pipe(gulpif(args.uncss, uncss({
             html: ['index.html', 'http://homestead.app'],
             ignore: [/header-/,/zoom/,/fade/]
