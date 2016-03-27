@@ -142,8 +142,8 @@ input,textarea,select,button{
       }
     }
     .search{
-      width: 19px;
-      height: 19px;
+      width: 18px;
+      height: 18px;
       background-image: url('images/search.png');
     }
   }
@@ -435,7 +435,10 @@ input,textarea,select,button{
 }
 .l-topnav{
   line-height: 90px;
-  .logo{margin-right: 30px;}
+  .logo{
+    margin-right: 30px;
+    vertical-align: middle;
+  }
   .followus{
     display: inline-block;
     *display:inline;
@@ -469,7 +472,7 @@ input,textarea,select,button{
       *zoom:1;
       background-color: #21a557;
       color: @btnlike-color;
-      line-height: 21px;
+      line-height: 24px;
       padding-left: 21px;
       padding-right: 18px;
       border-radius: 3px;
@@ -488,7 +491,7 @@ input,textarea,select,button{
     }
     #followed{
       display: none;
-      line-height: 21px;
+      line-height: 24px;
       padding-left: 21px;
       padding-right: 18px;
       &:before{
@@ -668,10 +671,15 @@ input,textarea,select,button{
             font-size: 12px;
             color: #666666;
             h2{
+
               font-weight: normal;
               margin: 4px auto 16px 0;
               font-size: 18px;
               color: @headtext-color;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+
             }
             .studynum{
                margin: 0 auto 10px 0;
@@ -686,6 +694,7 @@ input,textarea,select,button{
           }
           .detailtext{
           	position: absolute;
+            width: 100%;
           	bottom: 0;
             height: 84px;
             overflow: hidden;
