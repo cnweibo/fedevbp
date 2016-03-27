@@ -2,7 +2,7 @@ var animateFunc = function() {
     var hotcourses = getElementsByClassName('hotcourses')[0];
     window.hotcourseRemainingNodes = [];
     hotcourses.style.height = getComputedStyle(hotcourses).height;
-    insertHotCourse(hotcourses,hotlistdata[10]); //todo: module dependency方案引入解决加载顺序依赖问题
+    util.insertHotCourse(hotcourses,hotlistdata[10]); //todo: module dependency方案引入解决加载顺序依赖问题
     window.hotcourseRemainingItems = hotlistdata.slice(11);
 		for (var i = 0; i < hotcourseRemainingItems.length; i++) {
 		    var item = document.createElement('div');

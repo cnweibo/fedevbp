@@ -68,7 +68,14 @@ var util = (function(){
         }
         return this;
       }
+    },
+    // helper function
+    insertHotCourse: function (p,data){
+        var item = document.createElement('div');
+        item.setAttribute('class','m-hostcourseitem');
+        var innerhtml = ' <img src="'+data.middlePhotoUrl+'" alt=""><div class="info"><h4>'+data.name+'</h4><div class="studentnum">'+data.learnerCount+'</div></div>';
+        item.innerHTML = innerhtml;
+        p.appendChild(item);
     }
-
   }
 })()

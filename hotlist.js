@@ -1,4 +1,5 @@
     (function(u) {
+        
         // hotList class constructor function
         function hotList(configuration) {
             // configuration layout{container: '',url:''}
@@ -10,7 +11,7 @@
             window.hotlistdata = data;
             var parent = getElementsByClassName('hotcourses')[0];
             for (var i = 0; i < 10; i++) {
-                insertHotCourse(parent,data[i]);
+                u.insertHotCourse(parent,data[i]);
             }
             this.emit('populated');
         }
