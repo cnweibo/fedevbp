@@ -1,0 +1,1 @@
+git archive --format=zip -o archived.zip HEAD
