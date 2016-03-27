@@ -6,6 +6,6 @@ gulp.config.js export-ignore
 style.less export-ignore
 .idea export-ignore
 .git export-ignore
-.json export-ignore
+*.json export-ignore
 
 LAST_COMMIT export-subst
