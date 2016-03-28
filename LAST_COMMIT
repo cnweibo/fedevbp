@@ -1,2 +1,2 @@
-Last commit:  (HEAD -> master) : 399446e by cnweibo at Sun Mar 27 20:16:12 2016 +0800
-      revert to normal css , test the depolyment scenario
+Last commit:  (HEAD -> master) : ecef291 by cnweibo at Mon Mar 28 19:53:41 2016 +0800
+      inserthotlistdata moved as a utinity function
