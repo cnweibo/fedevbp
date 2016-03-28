@@ -1,1 +1,2 @@
-$Format:Last commit: %d : %h by %aN at %cd%n%+w(76,6,9)%B$
+Last commit:  (HEAD -> master) : ecef291 by cnweibo at Mon Mar 28 19:53:41 2016 +0800
+      inserthotlistdata moved as a utinity function
